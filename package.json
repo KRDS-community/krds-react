@@ -1,7 +1,7 @@
 {
   "name": "@krds-ui/react",
-  "version": "0.1.0",
   "description": "React library of South Korean digital government service UI/UX guidelines.",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "lerna run dev",
@@ -9,8 +9,8 @@
     "test": "lerna run test",
     "lint": "lerna run lint",
     "clean": "lerna clean",
-    "version": "lerna version",
-    "publish": "lerna publish"
+    "version:release": "lerna version --no-private",
+    "publish:release": "lerna publish --yes --no-private"
   },
   "keywords": [
     "react",
@@ -21,10 +21,16 @@
     "component library"
   ],
   "author": "Lukas.J.Han <lukas.j.han@gmail.com>",
-  "authors": [],
   "license": "Apache-2.0",
   "engines": {
     "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KRDS-community/krds-react"
+  },
+  "bugs": {
+    "url": "https://github.com/KRDS-community/krds-react/issues"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
