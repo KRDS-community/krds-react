@@ -3,5 +3,5 @@
   "maxWidth": 80,
   "trailingComma": "all",
   "singleQuote": true,
-  "semi": false
+  "semi": true
 }
