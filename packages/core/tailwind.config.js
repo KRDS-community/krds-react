@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-import defaultTheme from 'tailwindcss/defaultTheme'
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./lib/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -117,7 +117,7 @@ export default {
         'heading-l': ['50px', { lineHeight: '150%', letterSpacing: '1px' }],
         'heading-m': ['40px', { lineHeight: '150%', letterSpacing: '1px' }],
         'heading-s': ['32px', { lineHeight: '150%', letterSpacing: '1px' }],
-        'title-2xl': ['32px', { lineHeight: '150%', letterSpacing: '1px' }],
+        'title-xxl': ['32px', { lineHeight: '150%', letterSpacing: '1px' }],
         'title-xl': ['25px', { lineHeight: '150%' }],
         'title-l': ['21px', { lineHeight: '150%' }],
         'title-m': ['19px', { lineHeight: '150%' }],
@@ -133,6 +133,9 @@ export default {
         'label-m': ['17px', { lineHeight: '150%' }],
         'label-s': ['15px', { lineHeight: '150%' }],
         'label-xs': ['13px', { lineHeight: '150%' }],
+        'link-l': ['19px', { lineHeight: '150%' }],
+        'link-m': ['17px', { lineHeight: '150%' }],
+        'link-s': ['15px', { lineHeight: '150%' }],
       },
       fontWeight: {
         regular: 400,
@@ -141,4 +144,4 @@ export default {
     },
   },
   plugins: [],
-}
+};
