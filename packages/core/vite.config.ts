@@ -3,6 +3,10 @@ import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 import tailwindcss from 'tailwindcss';
+/*
+This is for debugging rollup only.
+import { visualizer } from 'rollup-plugin-visualizer';
+*/
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,19 +17,31 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'tailwindcss'],
+      external: ['react', 'react-dom', 'tailwindcss', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           tailwindcss: 'tailwindcss',
+          'react/jsx-runtime': 'jsxRuntime',
         },
       },
     },
     sourcemap: false,
     emptyOutDir: true,
   },
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [
+    react({
+      jsxImportSource: 'react',
+    }),
+    dts({ rollupTypes: true }),
+    /* This is for debugging rollup only.
+    visualizer({
+      open: true,
+      filename: 'inspect/rollup.html',
+    }),
+    */
+  ],
   css: {
     postcss: {
       plugins: [tailwindcss],
