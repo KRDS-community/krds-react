@@ -1,23 +1,22 @@
 export type DisplayProps<E extends React.ElementType> = {
-  size: 'l' | 'm' | 's';
+  size?: 'l' | 'm' | 's';
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
 
 export const Display = <E extends React.ElementType = 'h1'>({
-  size,
+  size = 'm',
   children,
   className = '',
   ...props
 }: DisplayProps<E>) => {
-  const sizeClassMap = {
+  const sizeClass = {
     l: 'text-display-l',
     m: 'text-display-m',
     s: 'text-display-s',
-  };
-
-  const sizeClass = sizeClassMap[size];
+  }[size];
   const weightClass = 'font-bold';
+
   return (
     <h1 className={`${sizeClass} ${weightClass} ${className}`} {...props}>
       {children}

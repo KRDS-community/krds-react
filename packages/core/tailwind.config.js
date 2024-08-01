@@ -132,7 +132,7 @@ export default {
         'label-l': ['19px', { lineHeight: '150%' }],
         'label-m': ['17px', { lineHeight: '150%' }],
         'label-s': ['15px', { lineHeight: '150%' }],
-        'label-x': ['13px', { lineHeight: '150%' }],
+        'label-xs': ['13px', { lineHeight: '150%' }],
         'link-l': ['19px', { lineHeight: '150%' }],
         'link-m': ['17px', { lineHeight: '150%' }],
         'link-s': ['15px', { lineHeight: '150%' }],
