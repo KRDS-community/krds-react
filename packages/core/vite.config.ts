@@ -17,12 +17,11 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'tailwindcss', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          tailwindcss: 'tailwindcss',
           'react/jsx-runtime': 'jsxRuntime',
         },
       },
