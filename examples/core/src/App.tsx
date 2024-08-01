@@ -5,10 +5,10 @@ function App() {
   return (
     <>
       <div>
-        <Heading size="medium">Heading</Heading>
+        <Display size="s">Display</Display>
       </div>
       <div>
-        <Display size="medium">Display</Display>
+        <Heading size="s">Heading</Heading>
       </div>
     </>
   );
