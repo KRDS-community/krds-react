@@ -1,31 +1,34 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
 import react from '@vitejs/plugin-react-swc';
+import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
+import tailwindcss from 'tailwindcss';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    dts({ include: ['src'], insertTypesEntry: true, rollupTypes: true }),
-  ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'umd'],
+      entry: resolve(__dirname, './lib/index.ts'),
       name: 'krds-ui-core',
-      fileName: (format) => `krds-ui-core.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'tailwindcss'],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          tailwindcss: 'tailwindcss',
         },
       },
+    },
+    sourcemap: false,
+    emptyOutDir: true,
+  },
+  plugins: [react(), dts({ rollupTypes: true })],
+  css: {
+    postcss: {
+      plugins: [tailwindcss],
     },
   },
 });

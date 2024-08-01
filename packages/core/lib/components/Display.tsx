@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type DisplayProps<E extends React.ElementType> = {
   size: 'large' | 'medium' | 'small';
   children: React.ReactNode;
