@@ -23,6 +23,15 @@ yarn add @krds-ui/core
 pnpm add @krds-ui/core
 ```
 
+## 프로젝트 셋팅
+
+core 라이브러리의 css를 import하셔야 폰트가 적용됩니다.
+
+```ts
+// main.tsx
+import '@krds-ui/core/dist/style.css';
+```
+
 ## 컴포넌트 목록
 
 ### Display
