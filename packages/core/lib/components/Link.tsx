@@ -1,4 +1,4 @@
-export type LabelProps<E extends React.ElementType> = {
+export type LinkProps<E extends React.ElementType> = {
   size?: 'l' | 'm' | 's';
   weight?: 'regular' | 'bold';
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export const Link = <E extends React.ElementType = 'a'>({
   children,
   className = '',
   ...props
-}: LabelProps<E>) => {
+}: LinkProps<E>) => {
   const sizeClass = {
     l: 'text-link-l',
     m: 'text-link-m',
