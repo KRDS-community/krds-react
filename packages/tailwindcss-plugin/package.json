@@ -1,0 +1,10 @@
+{
+  "name": "@krds-ui/tailwindcss-plugin",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./krds-plugin.js",
+  "devDependencies": {
+    "vite": "^5.3.4",
+    "tailwindcss": "^3.4.7"
+  }
+}
