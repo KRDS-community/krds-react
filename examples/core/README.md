@@ -3,7 +3,7 @@
 ## 포함된 기능들
 
 - [x] Typography
-- [ ] Color
+- [x] Color
 
 ## 사용방법
 
