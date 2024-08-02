@@ -429,6 +429,18 @@ module.exports = plugin(function ({ addBase, addUtilities, theme }) {}, {
         9: '40px',
         10: '48px',
       },
+      borderRadius: {
+        0: '0',
+        1: '2px',
+        2: '4px',
+        3: '6px',
+        4: '8px',
+        5: '12px',
+        6: '16px',
+        7: '20px',
+        8: '24px',
+        9: '40px',
+      },
     },
   },
 });
