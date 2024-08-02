@@ -67,6 +67,58 @@ importers:
         specifier: ^5.3.4
         version: 5.3.5(@types/node@22.0.0)(sass@1.77.8)
 
+  examples/tailwindcss-plugin:
+    dependencies:
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.40)
+      postcss:
+        specifier: ^8.4.40
+        version: 8.4.40
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      tailwindcss:
+        specifier: ^3.4.7
+        version: 3.4.7
+    devDependencies:
+      '@krds-ui/tailwindcss-plugin':
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-plugin
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7.15.0
+        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/parser':
+        specifier: ^7.15.0
+        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.5.0
+        version: 3.7.0(vite@5.3.5(@types/node@22.0.0)(sass@1.77.8))
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.2
+        version: 4.6.2(eslint@8.57.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.7
+        version: 0.4.9(eslint@8.57.0)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.5.4
+      vite:
+        specifier: ^5.3.4
+        version: 5.3.5(@types/node@22.0.0)(sass@1.77.8)
+
   packages/core:
     dependencies:
       react:
