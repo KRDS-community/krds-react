@@ -1,6 +1,9 @@
+import { Color, getTextColorClassname } from '../colors/color.type';
+
 export type LinkProps<E extends React.ElementType> = {
   size?: 'l' | 'm' | 's';
   weight?: 'regular' | 'bold';
+  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
@@ -8,6 +11,7 @@ export type LinkProps<E extends React.ElementType> = {
 export const Link = <E extends React.ElementType = 'a'>({
   size = 'm',
   weight = 'regular',
+  color = 'gray-90',
   children,
   className = '',
   ...props
@@ -22,9 +26,13 @@ export const Link = <E extends React.ElementType = 'a'>({
     regular: 'font-regular',
     bold: 'font-bold',
   }[weight];
+  const textColorClass = getTextColorClassname(color);
 
   return (
-    <a className={`${sizeClass} ${weightClass} ${className}`} {...props}>
+    <a
+      className={`${sizeClass} ${weightClass} ${textColorClass} ${className}`}
+      {...props}
+    >
       {children}
     </a>
   );
