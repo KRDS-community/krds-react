@@ -19,10 +19,14 @@ function App() {
         <Display size="m">Display Medium</Display>
       </div>
       <div>
-        <Display size="s">Display Small</Display>
+        <Display size="s" color="primary">
+          Display Small
+        </Display>
       </div>
       <div>
-        <Heading size="l">Heading Large</Heading>
+        <Heading size="l" color="danger">
+          Heading Large
+        </Heading>
       </div>
       <div>
         <Heading size="m">Heading Medium</Heading>
@@ -31,7 +35,9 @@ function App() {
         <Heading size="s">Heading Small</Heading>
       </div>
       <div>
-        <Title size="xxl">Title XXL</Title>
+        <Title size="xxl" color="warning-10">
+          Title XXL
+        </Title>
       </div>
       <div>
         <Title size="xl">Title XL</Title>
@@ -40,7 +46,9 @@ function App() {
         <Title size="l">Title L</Title>
       </div>
       <div>
-        <Title size="m">Title M</Title>
+        <Title size="m" color="warning-30">
+          Title M
+        </Title>
       </div>
       <div>
         <Title size="s">Title S</Title>
@@ -49,7 +57,7 @@ function App() {
         <Title size="xs">Title XS</Title>
       </div>
       <div>
-        <Body size="l" weight="bold">
+        <Body size="l" weight="bold" color="primary-70">
           Body Large Bold
         </Body>
       </div>
@@ -67,7 +75,9 @@ function App() {
         <Body size="l">Body Large Regular</Body>
       </div>
       <div>
-        <Body size="m">Body Medium Regular</Body>
+        <Body size="m" color="success-70">
+          Body Medium Regular
+        </Body>
       </div>
       <div>
         <Body size="s">Body Small Regular</Body>
@@ -91,7 +101,9 @@ function App() {
         <Detail size="l">Detail Large Regular</Detail>
       </div>
       <div>
-        <Detail size="m">Detail Medium Regular</Detail>
+        <Detail size="m" color="secondary-40">
+          Detail Medium Regular
+        </Detail>
       </div>
       <div>
         <Detail size="s">Detail Small Regular</Detail>
@@ -107,7 +119,7 @@ function App() {
         </Label>
       </div>
       <div>
-        <Label size="s" weight="bold">
+        <Label size="s" weight="bold" color="gray-30">
           Label Small Bold
         </Label>
       </div>
@@ -120,7 +132,9 @@ function App() {
         <Label size="l">Label Large Regular</Label>
       </div>
       <div>
-        <Label size="m">Label Medium Regular</Label>
+        <Label size="m" color="point-60">
+          Label Medium Regular
+        </Label>
       </div>
       <div>
         <Label size="s">Label Small Regular</Label>
@@ -139,7 +153,7 @@ function App() {
         </Link>
       </div>
       <div>
-        <Link size="s" weight="bold">
+        <Link size="s" weight="bold" color="danger-90">
           Link Small Bold
         </Link>
       </div>
@@ -150,7 +164,9 @@ function App() {
         <Link size="m">Link Medium Regular</Link>
       </div>
       <div>
-        <Link size="s">Link Small Regular</Link>
+        <Link size="s" color="info-60">
+          Link Small Regular
+        </Link>
       </div>
     </>
   );
