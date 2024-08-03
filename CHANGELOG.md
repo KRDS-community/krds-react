@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/KRDS-community/krds-react/compare/v0.1.0...v0.2.0) (2024-08-03)
+
+
+### Bug Fixes
+
+* label prop typo ([#10](https://github.com/KRDS-community/krds-react/issues/10)) ([1ec8d0e](https://github.com/KRDS-community/krds-react/commit/1ec8d0e14aa54d264cab5fe2830a81951d495d78))
+* label style doesn't apply ([#24](https://github.com/KRDS-community/krds-react/issues/24)) ([df30630](https://github.com/KRDS-community/krds-react/commit/df30630b35f238d86b75360e8c67a3e77be899aa))
+
+
+### Features
+
+* add color in core lib ([#13](https://github.com/KRDS-community/krds-react/issues/13)) ([4c663c0](https://github.com/KRDS-community/krds-react/commit/4c663c0ddc6daceff0631e697e28f2ddcdb99764))
+* add color props in typography ([#20](https://github.com/KRDS-community/krds-react/issues/20)) ([eda924b](https://github.com/KRDS-community/krds-react/commit/eda924b8b496e002ee1c04396dfe66fe805ae457))
+* add spacing and radius config to tailwind plugin ([#21](https://github.com/KRDS-community/krds-react/issues/21)) ([22644e2](https://github.com/KRDS-community/krds-react/commit/22644e2979ed871216735098e402b758dc14fd18))
+* add storybook ([#22](https://github.com/KRDS-community/krds-react/issues/22)) ([1889134](https://github.com/KRDS-community/krds-react/commit/1889134d5c89c308b36719cec032bf4bc672d4d1))
+* add tailwindcss plugin ([#16](https://github.com/KRDS-community/krds-react/issues/16)) ([eaae67c](https://github.com/KRDS-community/krds-react/commit/eaae67c60112807a2681cabbdc78497fbd50d125))
+
+
+
+
+
 # 0.1.0 (2024-08-01)
 
 
