@@ -13,10 +13,10 @@ export const Label = <E extends React.ElementType = 'label'>({
   ...props
 }: LabelProps<E>) => {
   const sizeClass = {
-    l: 'text-lable-l',
-    m: 'text-lable-m',
-    s: 'text-lable-s',
-    xs: 'text-lable-xs',
+    l: 'text-label-l',
+    m: 'text-label-m',
+    s: 'text-label-s',
+    xs: 'text-label-xs',
   }[size];
 
   const weightClass = {
