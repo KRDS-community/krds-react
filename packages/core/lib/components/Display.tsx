@@ -1,5 +1,8 @@
+import { Color, getTextColorClassname } from '../colors/color.type';
+
 export type DisplayProps<E extends React.ElementType> = {
   size?: 'l' | 'm' | 's';
+  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
@@ -7,6 +10,7 @@ export type DisplayProps<E extends React.ElementType> = {
 export const Display = <E extends React.ElementType = 'h1'>({
   size = 'm',
   children,
+  color = 'gray-90',
   className = '',
   ...props
 }: DisplayProps<E>) => {
@@ -16,9 +20,13 @@ export const Display = <E extends React.ElementType = 'h1'>({
     s: 'text-display-s',
   }[size];
   const weightClass = 'font-bold';
+  const textColorClass = getTextColorClassname(color);
 
   return (
-    <h1 className={`${sizeClass} ${weightClass} ${className}`} {...props}>
+    <h1
+      className={`${sizeClass} ${weightClass} ${textColorClass} ${className}`}
+      {...props}
+    >
       {children}
     </h1>
   );
