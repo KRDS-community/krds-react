@@ -47,6 +47,14 @@ pnpm install
 - Vite
 - tailwindcss
 
+## StoryBook
+
+```bash
+pnpm storybook
+```
+
+http://localhost:6006 에서 확인할 수 있습니다.
+
 ## 라이센스
 
 Apache-2.0 라이센스를 따릅니다.

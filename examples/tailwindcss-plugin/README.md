@@ -1,9 +1,11 @@
-# KRDS-React Core 예제
+# KRDS-React TailwindCSS Plugin 예제
 
 ## 포함된 기능들
 
 - [x] Typography
 - [x] Color
+- [x] Spacing
+- [x] Radius
 
 ## 사용방법
 
@@ -16,7 +18,8 @@ pnpm install
 ### 1. Example 디렉토리 이동
 
 ```bash
-cd examples/core
+cd examples/tailwindcss-plugin
+
 ```
 
 ### 2. 실행
