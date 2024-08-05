@@ -1,0 +1,66 @@
+# KRDS-React
+
+KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인을 기반으로 한 React 컴포넌트 라이브러리입니다. 이 라이브러리는 정부 디지털 서비스의 일관성 있는 사용자 경험을 제공하기 위해 설계되었습니다.
+
+자세한 가이드는 [이곳](https://uiux.egovframe.go.kr/guide/index.html)에서 확인할 수 있습니다.
+
+## 주요 특징
+
+- **정부 가이드라인 준수**: 대한민국 정부 디지털 서비스 UI/UX 가이드라인을 엄격히 준수합니다.
+- **React 기반**: 현대적이고 효율적인 React 프레임워크를 사용하여 개발되었습니다.
+- **Tailwind CSS**: 유연하고 커스터마이즈 가능한 디자인을 위해 Tailwind CSS를 활용합니다.
+- **TypeScript 지원**: 타입 안정성과 개발자 경험 향상을 위해 TypeScript를 지원합니다.
+- **모듈식 구조**: 각 컴포넌트를 개별적으로 배포하여 필요한 기능만 선택적으로 사용할 수 있습니다.
+
+## 컴포넌트
+
+현재 KRDS-React는 다음과 같은 핵심 컴포넌트를 제공합니다:
+
+- **Core**: Typography, Color 등 기본적인 UI 요소들을 포함합니다.
+- **TailwindCSS Plugin**: KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인을 준수하기 위해 TailwindCSS를 활용합니다. 일관성 있는 TailwindCSS 테마를 제공하는 플러그인입니다.
+
+더 많은 컴포넌트가 지속적으로 개발 중입니다.
+
+## 시작하기
+
+KRDS-React를 프로젝트에 통합하는 것은 간단합니다. 필요한 컴포넌트 패키지를 설치하고 import하여 사용하면 됩니다.
+
+```bash
+npm install @krds-react/core
+```
+
+```jsx
+import { Button } from '@krds-react/core';
+
+function App() {
+  return <Button>Click me</Button>;
+}
+```
+
+### 버저닝
+
+저희 컴포넌트 라이브러리는 모노레포로 구성되어 있습니다. 저희는 모든 컴포넌트를 같은 버전으로 배포하고 있습니다. 따라서 사용하시는 컴포넌트 라이브러리의 버전을 하나로 사용해야 합니다.
+
+## 개발 및 기여
+
+KRDS-React는 오픈 소스 프로젝트로, 커뮤니티의 기여를 환영합니다. 버그 리포트, 기능 제안, 또는 Pull Request 모두 가능합니다.
+
+개발 환경 설정:
+
+```bash
+git clone https://github.com/hismethod/krds-react.git
+cd krds-react
+pnpm install
+```
+
+Storybook을 통해 컴포넌트를 확인하고 테스트할 수 있습니다:
+
+```bash
+pnpm storybook
+```
+
+## 라이센스
+
+KRDS-React는 Apache-2.0 라이센스 하에 배포됩니다.
+
+더 자세한 정보와 전체 문서는 [공식 GitHub 저장소](https://github.com/hismethod/krds-react)에서 확인할 수 있습니다.

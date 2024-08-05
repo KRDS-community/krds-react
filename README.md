@@ -1,6 +1,8 @@
 # KRDS-React
 
-KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인에 기반한 React 컴포넌트 라이브러리입니다. 자세한 가이드 내용은 [이곳](https://uiux.egovframe.go.kr/guide/index.html)에서 확인할 수 있습니다.
+KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인에 기반한 React 컴포넌트 라이브러리입니다. 이 라이브러리는 정부 디지털 서비스의 일관성 있는 사용자 경험을 제공하기 위해 설계되었습니다.
+
+자세한 가이드 내용은 [이곳](https://uiux.egovframe.go.kr/guide/index.html)에서 확인할 수 있습니다.
 
 ## 특징
 
@@ -16,10 +18,13 @@ KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인에 �
 ## 컴포넌트 목록
 
 - [Core](./packages/core/README.md): Typography, Color 등의 기본 컴포넌트들을 제공합니다.
+- [TailwindCSS Plugin](./packages/tailwindcss-plugin/README.md): KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인을 준수하기 위해 TailwindCSS를 활용합니다. 일관성 있는 TailwindCSS 테마를 제공하는 플러그인입니다.
 
 ## Contribution
 
-Issue 및 Pull Request는 언제든 환영합니다.
+Issue 및 Pull Request는 언제든 환영합니다. 버그 리포트, 기능 제안, 또는 Pull Request 모두 가능합니다.
+
+fork 후 작업하신 후 PR을 보내주시면 감사하겠습니다.
 
 ### 개발
 
