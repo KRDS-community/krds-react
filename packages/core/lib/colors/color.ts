@@ -334,11 +334,15 @@ export const colors = {
   pink90: '#33041D',
 
   fuchsia5: '#FDF2FD',
-  fuchsia10: '#F901F9',
+  fuchsia10: '#F9D1F9',
   fuchsia20: '#F2A3F2',
   fuchsia30: '#EC75EC',
   fuchsia40: '#E547E5',
   fuchsia50: '#DF19DF',
+  fuchsia60: '#B214B2',
+  fuchsia70: '#8B0F8B',
+  fuchsia80: '#590A59',
+  fuchsia90: '#2D052D',
 
   purple5: '#F5EEF7',
   purple10: '#E1CCE6',
