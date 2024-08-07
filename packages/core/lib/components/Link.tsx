@@ -17,9 +17,9 @@ export const Link = <E extends React.ElementType = 'a'>({
   ...props
 }: LinkProps<E>) => {
   const sizeClass = {
-    l: 'text-link-l',
-    m: 'text-link-m',
-    s: 'text-link-s',
+    l: 'text-link-l-mobile sm:text-link-l',
+    m: 'text-link-m-mobile sm:text-link-m',
+    s: 'text-link-s-mobile sm:text-link-s',
   }[size];
 
   const weightClass = {

@@ -17,9 +17,9 @@ export const Body = <E extends React.ElementType = 'p'>({
   ...props
 }: BodyProps<E>) => {
   const sizeClass = {
-    l: 'text-body-l',
-    m: 'text-body-m',
-    s: 'text-body-s',
+    l: 'text-body-l-mobile sm:text-body-l',
+    m: 'text-body-m-mobile sm:text-body-m',
+    s: 'text-body-s-mobile sm:text-body-s',
   }[size];
 
   const weightClass = {

@@ -17,9 +17,9 @@ export const Detail = <E extends React.ElementType = 'span'>({
   ...props
 }: DetailProps<E>) => {
   const sizeClass = {
-    l: 'text-detail-l',
-    m: 'text-detail-m',
-    s: 'text-detail-s',
+    l: 'text-detail-l-mobile sm:text-detail-l',
+    m: 'text-detail-m-mobile sm:text-detail-m',
+    s: 'text-detail-s-mobile sm:text-detail-s',
   }[size];
 
   const weightClass = {

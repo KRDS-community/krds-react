@@ -15,9 +15,9 @@ export const Heading = <E extends React.ElementType = 'h2'>({
   ...props
 }: HeadingProps<E>) => {
   const sizeClass = {
-    l: 'text-heading-l',
-    m: 'text-heading-m',
-    s: 'text-heading-s',
+    l: 'text-heading-l-mobile sm:text-heading-l',
+    m: 'text-heading-m-mobile sm:text-heading-m',
+    s: 'text-heading-s-mobile sm:text-heading-s',
   }[size];
   const weightClass = 'font-bold';
   const textColorClass = getTextColorClassname(color);
