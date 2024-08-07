@@ -1,0 +1,44 @@
+# Installation
+
+@krds-ui/core는 다음과 같이 설치할 수 있습니다.
+
+### NPM
+
+```bash
+npm install @krds-ui/core
+```
+
+### YARN
+
+```bash
+yarn add @krds-ui/core
+```
+
+### PNPM
+
+```bash
+pnpm add @krds-ui/core
+```
+
+## 프로젝트 셋팅
+
+core 라이브러리의 css를 import하셔야 폰트가 적용됩니다.
+
+```ts
+// main.tsx
+import '@krds-ui/core/dist/style.css';
+```
+
+## 예시 사용법
+
+많은 예시를 확인하고 싶으시다면 [이곳](https://github.com/KRDS-community/krds-react/tree/main/examples)에서 찾아보세요.
+
+### 간단한 Display 컴포넌트 예시
+
+```jsx
+import { Display } from '@krds-ui/core';
+
+function App() {
+  return <Display size="l">Display Large</Display>;
+}
+```
