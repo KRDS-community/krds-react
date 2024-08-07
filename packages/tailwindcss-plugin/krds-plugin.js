@@ -404,28 +404,86 @@ module.exports = plugin(function ({ addBase, addUtilities, theme }) {}, {
         'display-l': ['66px', { lineHeight: '150%', letterSpacing: '1px' }],
         'display-m': ['50px', { lineHeight: '150%', letterSpacing: '1px' }],
         'display-s': ['40px', { lineHeight: '150%', letterSpacing: '1px' }],
+        'display-l-mobile': [
+          '40px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+        'display-m-mobile': [
+          '32px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+        'display-s-mobile': [
+          '25px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+
+        // Heading
         'heading-l': ['50px', { lineHeight: '150%', letterSpacing: '1px' }],
         'heading-m': ['40px', { lineHeight: '150%', letterSpacing: '1px' }],
         'heading-s': ['32px', { lineHeight: '150%', letterSpacing: '1px' }],
+        'heading-l-mobile': [
+          '40px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+        'heading-m-mobile': [
+          '32px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+        'heading-s-mobile': [
+          '25px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+
+        // Title
         'title-xxl': ['32px', { lineHeight: '150%', letterSpacing: '1px' }],
         'title-xl': ['25px', { lineHeight: '150%' }],
         'title-l': ['21px', { lineHeight: '150%' }],
         'title-m': ['19px', { lineHeight: '150%' }],
         'title-s': ['17px', { lineHeight: '150%' }],
         'title-xs': ['15px', { lineHeight: '150%' }],
+        'title-xxl-mobile': [
+          '25px',
+          { lineHeight: '150%', letterSpacing: '1px' },
+        ],
+        'title-xl-mobile': ['25px', { lineHeight: '150%' }],
+        'title-l-mobile': ['21px', { lineHeight: '150%' }],
+        'title-m-mobile': ['19px', { lineHeight: '150%' }],
+        'title-s-mobile': ['17px', { lineHeight: '150%' }],
+        'title-xs-mobile': ['15px', { lineHeight: '150%' }],
+
+        // Body
         'body-l': ['19px', { lineHeight: '150%' }],
         'body-m': ['17px', { lineHeight: '150%' }],
         'body-s': ['15px', { lineHeight: '150%' }],
+        'body-l-mobile': ['19px', { lineHeight: '150%' }],
+        'body-m-mobile': ['17px', { lineHeight: '150%' }],
+        'body-s-mobile': ['15px', { lineHeight: '150%' }],
+
+        // Detail
         'detail-l': ['17px', { lineHeight: '150%' }],
         'detail-m': ['15px', { lineHeight: '150%' }],
         'detail-s': ['13px', { lineHeight: '150%' }],
+        'detail-l-mobile': ['17px', { lineHeight: '150%' }],
+        'detail-m-mobile': ['15px', { lineHeight: '150%' }],
+        'detail-s-mobile': ['13px', { lineHeight: '150%' }],
+
+        // Label
         'label-l': ['19px', { lineHeight: '150%' }],
         'label-m': ['17px', { lineHeight: '150%' }],
         'label-s': ['15px', { lineHeight: '150%' }],
         'label-xs': ['13px', { lineHeight: '150%' }],
+        'label-l-mobile': ['19px', { lineHeight: '150%' }],
+        'label-m-mobile': ['17px', { lineHeight: '150%' }],
+        'label-s-mobile': ['15px', { lineHeight: '150%' }],
+        'label-xs-mobile': ['13px', { lineHeight: '150%' }],
+
+        // Link
         'link-l': ['19px', { lineHeight: '150%' }],
         'link-m': ['17px', { lineHeight: '150%' }],
         'link-s': ['15px', { lineHeight: '150%' }],
+        'link-l-mobile': ['19px', { lineHeight: '150%' }],
+        'link-m-mobile': ['17px', { lineHeight: '150%' }],
+        'link-s-mobile': ['15px', { lineHeight: '150%' }],
       },
       fontWeight: {
         regular: 400,
