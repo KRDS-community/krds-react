@@ -463,7 +463,7 @@ const ColorPalette = () => {
 };
 
 export default {
-  title: 'Design System/Color Palette',
+  title: 'Color Palette',
   component: ColorPalette,
 };
 
