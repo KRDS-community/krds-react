@@ -15,12 +15,12 @@ export const Title = <E extends React.ElementType = 'h3'>({
   ...props
 }: TitleProps<E>) => {
   const sizeClass = {
-    xxl: 'text-title-xxl',
-    xl: 'text-title-xl',
-    l: 'text-title-l',
-    m: 'text-title-m',
-    s: 'text-title-s',
-    xs: 'text-title-xs',
+    xxl: 'text-title-xxl-mobile sm:text-title-xxl',
+    xl: 'text-title-xl-mobile sm:text-title-xl',
+    l: 'text-title-l-mobile sm:text-title-l',
+    m: 'text-title-m-mobile sm:text-title-m',
+    s: 'text-title-s-mobile sm:text-title-s',
+    xs: 'text-title-xs-mobile sm:text-title-xs',
   }[size];
   const weightClass = 'font-bold';
   const textColorClass = getTextColorClassname(color);

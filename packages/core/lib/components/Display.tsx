@@ -15,9 +15,9 @@ export const Display = <E extends React.ElementType = 'h1'>({
   ...props
 }: DisplayProps<E>) => {
   const sizeClass = {
-    l: 'text-display-l',
-    m: 'text-display-m',
-    s: 'text-display-s',
+    l: 'text-display-l-mobile sm:text-display-l',
+    m: 'text-display-m-mobile sm:text-display-m',
+    s: 'text-display-s-mobile sm:text-display-s',
   }[size];
   const weightClass = 'font-bold';
   const textColorClass = getTextColorClassname(color);
