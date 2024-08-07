@@ -8,4 +8,7 @@ import { Label } from './components/Label';
 import { Link } from './components/Link';
 import { colors } from './colors/color';
 
+import { Button } from './components/Button';
+
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
+export { Button };
