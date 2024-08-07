@@ -34,6 +34,8 @@ const meta = {
   argTypes: {
     color: {
       control: { type: 'text' },
+      description:
+        'Primary, Secondary, Gray, Point, Danger, Warning, Success, Info 컬러 지원',
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
