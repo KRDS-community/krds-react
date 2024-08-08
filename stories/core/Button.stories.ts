@@ -59,6 +59,15 @@ export const Tertiary: Story = {
   },
 };
 
+export const Link: Story = {
+  args: {
+    variant: 'link',
+    children: '버튼: Link',
+    size: 'small',
+    onClick: fn(),
+  },
+};
+
 export const XSmall: Story = {
   args: {
     variant: 'primary',
@@ -129,6 +138,16 @@ export const DisabledTertiary: Story = {
     variant: 'tertiary',
     children: 'Disabled Button',
     size: 'medium',
+    disabled: true,
+    onClick: fn(),
+  },
+};
+
+export const DisabledLink: Story = {
+  args: {
+    variant: 'link',
+    children: 'Disabled Button',
+    size: 'small',
     disabled: true,
     onClick: fn(),
   },

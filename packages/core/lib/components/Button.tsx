@@ -3,7 +3,7 @@ import { Label } from './Label';
 import { Color } from '../colors/color.type';
 
 export type ButtonProps<E extends React.ElementType> = {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
   children: React.ReactNode;
   className?: string;
@@ -43,6 +43,12 @@ export const Button = <E extends React.ElementType = 'button'>({
       style: 'bg-gray-0 hover:bg-gray-5 border border-gray-90',
       color: 'gray-90' as Color,
       disabledStyle: 'bg-gray-0 border border-gray-40',
+      disabledColor: 'gray-40' as Color,
+    },
+    link: {
+      style: 'bg-transparent',
+      color: 'gray-90' as Color,
+      disabledStyle: 'bg-transparent',
       disabledColor: 'gray-40' as Color,
     },
   }[variant];
@@ -87,6 +93,8 @@ export const Button = <E extends React.ElementType = 'button'>({
     }
   };
 
+  const labelStyles = `${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${variant === 'link' ? 'underline' : ''}`;
+
   return (
     <button
       className={buttonStyles}
@@ -98,7 +106,7 @@ export const Button = <E extends React.ElementType = 'button'>({
       <Label
         color={disabled ? variantStyles.disabledColor : variantStyles.color}
         size={sizeStyles.fontSize}
-        className={disabled ? 'cursor-not-allowed' : 'cursor-pointer'}
+        className={labelStyles}
       >
         {children}
       </Label>
