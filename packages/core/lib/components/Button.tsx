@@ -3,7 +3,7 @@ import { Label } from './Label';
 import { Color } from '../colors/color.type';
 
 export type ButtonProps<E extends React.ElementType> = {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'text';
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
   children: React.ReactNode;
   className?: string;
@@ -45,7 +45,7 @@ export const Button = <E extends React.ElementType = 'button'>({
       disabledStyle: 'bg-gray-0 border border-gray-40',
       disabledColor: 'gray-40' as Color,
     },
-    link: {
+    text: {
       style: 'bg-transparent',
       color: 'gray-90' as Color,
       disabledStyle: 'bg-transparent',
