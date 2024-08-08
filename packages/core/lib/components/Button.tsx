@@ -93,7 +93,7 @@ export const Button = <E extends React.ElementType = 'button'>({
     }
   };
 
-  const labelStyles = `${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${variant === 'link' ? 'underline' : ''}`;
+  const labelStyles = `${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${variant === 'text' ? 'underline' : ''}`;
 
   return (
     <button
