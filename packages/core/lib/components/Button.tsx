@@ -1,44 +1,63 @@
 import React from 'react';
-import { Color, getTextColorClassname } from '../colors/color.type';
+import { Label } from './Label';
+import { Color } from '../colors/color.type';
 
 export type ButtonProps<E extends React.ElementType> = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
-  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
 
 export const Button = <E extends React.ElementType = 'button'>({
   variant = 'primary',
-  size = 'medium',
-  color = 'gray-90',
+  size = 'large',
   children,
   className = '',
   ...props
 }: ButtonProps<E>) => {
   const baseStyles =
-    'inline-flex items-center justify-center rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200';
+    'inline-flex items-center justify-center rounded-4 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200 cursor-pointer';
 
-  const variantStyles = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-    secondary:
-      'bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500',
-    tertiary:
-      'bg-white text-gray-700 hover:bg-gray-100 focus:ring-gray-500 border border-gray-300',
+  const variantStyles: { style: string; color: Color } = {
+    primary: {
+      style: 'bg-primary hover:bg-primary-60',
+      color: 'gray-0' as Color,
+    },
+    secondary: {
+      style: 'bg-gray-0 hover:bg-primary-5 border border-primary',
+      color: 'primary' as Color,
+    },
+    tertiary: {
+      style: 'bg-gray-0 hover:bg-gray-5 border border-gray-90',
+      color: 'gray-90' as Color,
+    },
   }[variant];
 
-  const sizeStyles = {
-    'x-small': 'px-2 py-1 text-xs min-w-[17px] min-h-[17px]',
-    small: 'px-2 py-1 text-sm min-w-[17px] min-h-[17px]',
-    medium: 'px-4 py-2 text-base min-w-[44px] min-h-[44px]',
-    large: 'px-6 py-3 text-lg min-w-[44px] min-h-[44px]',
-    'x-large': 'px-8 py-4 text-xl min-w-[44px] min-h-[44px]',
+  const sizeStyles: { style: string; fontSize: 'l' | 'm' | 's' | 'xs' } = {
+    'x-small': {
+      style: 'px-3 min-w-[32px] min-h-[32px]',
+      fontSize: 's' as const,
+    },
+    small: {
+      style: 'px-3 min-w-[40px] min-h-[40px]',
+      fontSize: 'm' as const,
+    },
+    medium: {
+      style: 'px-4 min-w-[48px] min-h-[48px]',
+      fontSize: 'm' as const,
+    },
+    large: {
+      style: 'px-6 min-w-[56px] min-h-[56px]',
+      fontSize: 'l' as const,
+    },
+    'x-large': {
+      style: 'px-8 min-w-[64px] min-h-[64px]',
+      fontSize: 'l' as const,
+    },
   }[size];
 
-  const textColorClass = getTextColorClassname(color);
-
-  const buttonStyles = `${baseStyles} ${variantStyles} ${sizeStyles} ${textColorClass} ${className}`;
+  const buttonStyles = `${baseStyles} ${variantStyles.style} ${sizeStyles.style} ${className}`;
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -54,7 +73,13 @@ export const Button = <E extends React.ElementType = 'button'>({
       role="button"
       {...props}
     >
-      {children}
+      <Label
+        color={variantStyles.color}
+        size={sizeStyles.fontSize}
+        className="cursor-pointer"
+      >
+        {children}
+      </Label>
     </button>
   );
 };

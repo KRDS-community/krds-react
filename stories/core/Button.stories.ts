@@ -38,8 +38,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Primary Button',
-    size: 'medium',
+    children: '버튼: Primary',
     onClick: fn(),
   },
 };
@@ -47,8 +46,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    children: 'Secondary Button',
-    size: 'medium',
+    children: '버튼: Secondary',
     onClick: fn(),
   },
 };
@@ -56,8 +54,16 @@ export const Secondary: Story = {
 export const Tertiary: Story = {
   args: {
     variant: 'tertiary',
-    children: 'Tertiary Button',
-    size: 'medium',
+    children: '버튼: Tertiary',
+    onClick: fn(),
+  },
+};
+
+export const XSmall: Story = {
+  args: {
+    variant: 'primary',
+    children: 'X-Small 버튼',
+    size: 'x-small',
     onClick: fn(),
   },
 };
@@ -65,8 +71,17 @@ export const Tertiary: Story = {
 export const Small: Story = {
   args: {
     variant: 'primary',
-    children: 'Small Button',
+    children: 'Small 버튼',
     size: 'small',
+    onClick: fn(),
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Medium 버튼',
+    size: 'medium',
     onClick: fn(),
   },
 };
@@ -74,8 +89,17 @@ export const Small: Story = {
 export const Large: Story = {
   args: {
     variant: 'primary',
-    children: 'Large Button',
+    children: 'Large 버튼',
     size: 'large',
+    onClick: fn(),
+  },
+};
+
+export const XLarge: Story = {
+  args: {
+    variant: 'primary',
+    children: 'X-Large 버튼',
+    size: 'x-large',
     onClick: fn(),
   },
 };
