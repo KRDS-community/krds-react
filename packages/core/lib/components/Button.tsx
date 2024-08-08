@@ -7,6 +7,7 @@ export type ButtonProps<E extends React.ElementType> = {
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
   children: React.ReactNode;
   className?: string;
+  disabled?: boolean;
 } & React.ComponentPropsWithoutRef<E>;
 
 export const Button = <E extends React.ElementType = 'button'>({
@@ -14,23 +15,35 @@ export const Button = <E extends React.ElementType = 'button'>({
   size = 'large',
   children,
   className = '',
+  disabled = false,
   ...props
 }: ButtonProps<E>) => {
   const baseStyles =
-    'inline-flex items-center justify-center rounded-4 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200 cursor-pointer';
+    'inline-flex items-center justify-center rounded-4 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200';
 
-  const variantStyles: { style: string; color: Color } = {
+  const variantStyles: {
+    style: string;
+    color: Color;
+    disabledStyle: string;
+    disabledColor: Color;
+  } = {
     primary: {
       style: 'bg-primary hover:bg-primary-60',
       color: 'gray-0' as Color,
+      disabledStyle: 'bg-primary-20',
+      disabledColor: 'gray-0' as Color,
     },
     secondary: {
       style: 'bg-gray-0 hover:bg-primary-5 border border-primary',
       color: 'primary' as Color,
+      disabledStyle: 'bg-gray-0 border border-primary-30',
+      disabledColor: 'primary-30' as Color,
     },
     tertiary: {
       style: 'bg-gray-0 hover:bg-gray-5 border border-gray-90',
       color: 'gray-90' as Color,
+      disabledStyle: 'bg-gray-0 border border-gray-40',
+      disabledColor: 'gray-40' as Color,
     },
   }[variant];
 
@@ -57,12 +70,20 @@ export const Button = <E extends React.ElementType = 'button'>({
     },
   }[size];
 
-  const buttonStyles = `${baseStyles} ${variantStyles.style} ${sizeStyles.style} ${className}`;
+  const buttonStyles = `
+    ${baseStyles} 
+    ${disabled ? variantStyles.disabledStyle : variantStyles.style} 
+    ${sizeStyles.style} 
+    ${disabled ? 'cursor-not-allowed' : ''}
+    ${className}
+  `;
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      (event.currentTarget as HTMLButtonElement).click();
+      if (!disabled) {
+        (event.currentTarget as HTMLButtonElement).click();
+      }
     }
   };
 
@@ -71,12 +92,13 @@ export const Button = <E extends React.ElementType = 'button'>({
       className={buttonStyles}
       onKeyDown={handleKeyDown}
       role="button"
+      disabled={disabled}
       {...props}
     >
       <Label
-        color={variantStyles.color}
+        color={disabled ? variantStyles.disabledColor : variantStyles.color}
         size={sizeStyles.fontSize}
-        className="cursor-pointer"
+        className={disabled ? 'cursor-not-allowed' : 'cursor-pointer'}
       >
         {children}
       </Label>

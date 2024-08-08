@@ -113,3 +113,23 @@ export const Disabled: Story = {
     onClick: fn(),
   },
 };
+
+export const DisabledSecondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Disabled Button',
+    size: 'medium',
+    disabled: true,
+    onClick: fn(),
+  },
+};
+
+export const DisabledTertiary: Story = {
+  args: {
+    variant: 'tertiary',
+    children: 'Disabled Button',
+    size: 'medium',
+    disabled: true,
+    onClick: fn(),
+  },
+};
