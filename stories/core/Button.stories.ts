@@ -22,9 +22,6 @@ const meta = {
         options: ['x-small', 'small', 'medium', 'large', 'x-large'],
       },
     },
-    color: {
-      control: 'text',
-    },
     disabled: {
       control: 'boolean',
     },
