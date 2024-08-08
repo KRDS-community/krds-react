@@ -59,7 +59,7 @@ export const Tertiary: Story = {
 export const Text: Story = {
   args: {
     variant: 'text',
-    children: '버튼: Link',
+    children: '버튼: Text',
     size: 'small',
     onClick: fn(),
   },
