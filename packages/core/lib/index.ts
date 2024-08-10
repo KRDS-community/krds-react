@@ -9,6 +9,7 @@ import { Link } from './components/Link';
 import { colors } from './colors/color';
 
 import { Button } from './components/Button';
+import { Tag } from './components/Tag';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button };
+export { Button, Tag };
