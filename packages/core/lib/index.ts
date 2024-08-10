@@ -10,7 +10,9 @@ import { colors } from './colors/color';
 
 import { Button } from './components/Button';
 import { LinkButton } from './components/LinkButton';
+import { Tag } from './components/Tag';
+import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Badge };
+export { Button, LinkButton, Tag, Spinner, Badge };
