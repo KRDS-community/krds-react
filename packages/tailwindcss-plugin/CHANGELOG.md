@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/lukasjhan/krds-react/compare/v0.2.0...v0.3.0) (2024-08-10)
+
+
+### Features
+
+* add mobile typo size ([#42](https://github.com/lukasjhan/krds-react/issues/42)) ([c3851d7](https://github.com/lukasjhan/krds-react/commit/c3851d72e7852845787be0955d6ace65580e782f))
+
+
+
+
+
 # [0.2.0](https://github.com/lukasjhan/krds-react/compare/v0.1.0...v0.2.0) (2024-08-03)
 
 

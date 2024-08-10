@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/KRDS-community/krds-react/compare/v0.2.0...v0.3.0) (2024-08-10)
+
+
+### Bug Fixes
+
+* remove font size css for button ([#73](https://github.com/KRDS-community/krds-react/issues/73)) ([758dae3](https://github.com/KRDS-community/krds-react/commit/758dae349258c5779a41d83a27913f5bff3ae2b8))
+
+
+### Features
+
+* add badge component ([#76](https://github.com/KRDS-community/krds-react/issues/76)) ([7fbbfdb](https://github.com/KRDS-community/krds-react/commit/7fbbfdbbfa662265c14d011024982da011cb4a31))
+* add button component ([#47](https://github.com/KRDS-community/krds-react/issues/47)) ([1cbcda8](https://github.com/KRDS-community/krds-react/commit/1cbcda85a651ecdca2596f089ccad957fe86ea74))
+* add cname for krds.js.org ([#33](https://github.com/KRDS-community/krds-react/issues/33)) ([d763b7e](https://github.com/KRDS-community/krds-react/commit/d763b7e26d1ca8650e5a37081daac1db3dea5ad8))
+* add link button ([#72](https://github.com/KRDS-community/krds-react/issues/72)) ([8f61c53](https://github.com/KRDS-community/krds-react/commit/8f61c530ac27ca7088712b6c209145c7e3b76b16))
+* add mobile typo size ([#42](https://github.com/KRDS-community/krds-react/issues/42)) ([c3851d7](https://github.com/KRDS-community/krds-react/commit/c3851d72e7852845787be0955d6ace65580e782f))
+* add spinner ([#74](https://github.com/KRDS-community/krds-react/issues/74)) ([eff39f6](https://github.com/KRDS-community/krds-react/commit/eff39f61f8fe8557189048f09ed2b285efedc2eb))
+* add tag component ([#75](https://github.com/KRDS-community/krds-react/issues/75)) ([d2882a9](https://github.com/KRDS-community/krds-react/commit/d2882a9d8a92b4e4c490ea205104c4d1cae6a42c))
+* fix color in core and add color to storybook ([#44](https://github.com/KRDS-community/krds-react/issues/44)) ([f1f6b1b](https://github.com/KRDS-community/krds-react/commit/f1f6b1b3308d197b45a118afbd93389b0712ef69))
+
+
+
+
+
 # [0.2.0](https://github.com/KRDS-community/krds-react/compare/v0.1.0...v0.2.0) (2024-08-03)
 
 
