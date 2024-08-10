@@ -9,6 +9,7 @@ import { Link } from './components/Link';
 import { colors } from './colors/color';
 
 import { Button } from './components/Button';
+import { Spinner } from './components/Spinner';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button };
+export { Button, Spinner };
