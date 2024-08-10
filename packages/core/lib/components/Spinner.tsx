@@ -54,15 +54,14 @@ export const Spinner = ({
           className="opacity-25"
           cx="12"
           cy="12"
-          r="10"
+          r="9"
           stroke="currentColor"
           strokeWidth="2"
         ></circle>
         <path
           className="opacity-75"
           fill="currentColor"
-          strokeWidth="0"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          d="M12 2a10 10 0 0110 10 10 10 0 01-5 8.66l-1-1.73a8 8 0 004-6.93 8 8 0 00-8-8V2z"
         ></path>
       </svg>
     </div>
