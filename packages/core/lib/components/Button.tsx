@@ -19,7 +19,7 @@ export const Button = <E extends React.ElementType = 'button'>({
   ...props
 }: ButtonProps<E>) => {
   const baseStyles =
-    'inline-flex items-center justify-center rounded-4 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200';
+    'inline-flex items-center justify-center rounded-4 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200';
 
   const variantStyles: {
     style: string;
