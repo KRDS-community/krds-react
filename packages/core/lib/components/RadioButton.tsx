@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Label } from './Label';
 
 type RadioButtonProps = {
@@ -126,9 +126,58 @@ export const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
 }) => {
   const directionClasses = direction === 'horizontal' ? 'flex-row' : 'flex-col';
   const gapStyle = direction === 'horizontal' ? 'gap-5' : 'gap-2';
+  const groupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!groupRef.current || disabled) return;
+
+      const radioButtons = Array.from(
+        groupRef.current.querySelectorAll('input[type="radio"]')
+      );
+      const currentIndex = radioButtons.findIndex(
+        (radio) => (radio as HTMLInputElement).checked
+      );
+
+      let nextIndex: number;
+
+      switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowLeft':
+          event.preventDefault();
+          nextIndex =
+            currentIndex > 0 ? currentIndex - 1 : radioButtons.length - 1;
+          break;
+        case 'ArrowDown':
+        case 'ArrowRight':
+          event.preventDefault();
+          nextIndex =
+            currentIndex < radioButtons.length - 1 ? currentIndex + 1 : 0;
+          break;
+        default:
+          return;
+      }
+
+      const nextRadio = radioButtons[nextIndex] as HTMLInputElement;
+      nextRadio.checked = true;
+      nextRadio.focus();
+      onChange(nextRadio.value);
+    };
+
+    const currentRef = groupRef.current;
+    currentRef?.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      currentRef?.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onChange, disabled]);
 
   return (
-    <div className={`flex ${directionClasses} ${gapStyle}`}>
+    <div
+      className={`flex ${directionClasses} ${gapStyle}`}
+      ref={groupRef}
+      role="radiogroup"
+    >
       {options.map((option) => (
         <RadioButton
           key={option.value}
