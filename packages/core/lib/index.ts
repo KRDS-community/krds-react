@@ -16,6 +16,17 @@ import { Badge } from './components/Badge';
 import { Switch } from './components/Switch';
 import { Chip } from './components/Chip';
 import { Checkbox } from './components/Checkbox';
+import { RadioButtonGroup } from './components/RadioButton';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge, Switch, Chip, Checkbox };
+export {
+  Button,
+  LinkButton,
+  Tag,
+  Spinner,
+  Badge,
+  Switch,
+  Chip,
+  Checkbox,
+  RadioButtonGroup,
+};
