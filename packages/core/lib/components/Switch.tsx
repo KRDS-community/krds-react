@@ -7,6 +7,7 @@ export type SwitchProps = {
   disabled?: boolean;
   label?: string;
   labelPosition?: 'left' | 'right';
+  id: string;
 };
 
 export const Switch = ({
@@ -16,10 +17,20 @@ export const Switch = ({
   onChange,
   label,
   labelPosition = 'right',
+  id,
 }: SwitchProps) => {
   const handleToggle = () => {
     if (!disabled) {
       onChange(!status);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (!disabled) {
+        onChange(!status);
+      }
     }
   };
 
@@ -44,13 +55,20 @@ export const Switch = ({
         disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
       }`}
       onClick={handleToggle}
+      onKeyDown={handleKeyDown}
+      role="switch"
+      aria-checked={status}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
     >
       <input
+        id={id}
         type="checkbox"
         className="sr-only"
         checked={status}
         disabled={disabled}
         onChange={handleToggle}
+        aria-hidden="true"
       />
       <div
         className={`block rounded-full ${
@@ -74,11 +92,15 @@ export const Switch = ({
       className={`flex ${labelSizeClasses.gap} items-center ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
     >
       {labelPosition === 'left' && (
-        <Label size={labelSizeClasses.size}>{label}</Label>
+        <Label htmlFor={id} size={labelSizeClasses.size}>
+          {label}
+        </Label>
       )}
       {switchComponent}
       {labelPosition === 'right' && (
-        <Label size={labelSizeClasses.size}>{label}</Label>
+        <Label htmlFor={id} size={labelSizeClasses.size}>
+          {label}
+        </Label>
       )}
     </div>
   );

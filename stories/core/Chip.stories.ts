@@ -43,6 +43,7 @@ export const Checked: Story = {
     checked: true,
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
+    id: 'chip-1',
   },
 };
 
@@ -51,6 +52,7 @@ export const Unchecked: Story = {
     checked: false,
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
+    id: 'chip-2',
   },
 };
 
@@ -60,6 +62,7 @@ export const Disabled: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
     disabled: true,
+    id: 'chip-3',
   },
 };
 
@@ -69,6 +72,7 @@ export const UncheckedDisabled: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
     disabled: true,
+    id: 'chip-4',
   },
 };
 
@@ -78,6 +82,7 @@ export const SmallChip: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
     size: 'sm',
+    id: 'chip-5',
   },
 };
 
@@ -87,6 +92,7 @@ export const MediumChip: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
     size: 'md',
+    id: 'chip-6',
   },
 };
 
@@ -96,5 +102,6 @@ export const LargeChip: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Chip',
     size: 'lg',
+    id: 'chip-7',
   },
 };

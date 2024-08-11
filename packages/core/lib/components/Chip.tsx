@@ -7,6 +7,7 @@ export type ChipProps = {
   disabled?: boolean;
   size?: 'sm' | 'md' | 'lg';
   onChange: (newCheckedState: boolean) => void;
+  id: string;
 };
 
 export const Chip: React.FC<ChipProps> = ({
@@ -15,6 +16,7 @@ export const Chip: React.FC<ChipProps> = ({
   disabled = false,
   size = 'md',
   onChange,
+  id,
 }) => {
   const sizeClasses = {
     sm: 'px-4 h-8',
@@ -57,8 +59,34 @@ export const Chip: React.FC<ChipProps> = ({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (!disabled) {
+        onChange(!checked);
+      }
+    }
+  };
+
   return (
-    <div className={`${baseClasses} ${stateClasses}`} onClick={handleClick}>
+    <div
+      className={`${baseClasses} ${stateClasses}`}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="checkbox"
+      aria-checked={checked}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+    >
+      <input
+        type="checkbox"
+        id={id}
+        className="sr-only"
+        checked={checked}
+        disabled={disabled}
+        onChange={handleClick}
+        aria-hidden="true"
+      />
       <svg
         className={`${iconSizes[size]} ${iconClasses}`}
         fill="none"
@@ -71,6 +99,7 @@ export const Chip: React.FC<ChipProps> = ({
         <path d="M5 13l4 4L19 7"></path>
       </svg>
       <Label
+        htmlFor={id}
         size={labelSize}
         className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
         color={labelColor}

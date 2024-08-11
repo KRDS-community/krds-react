@@ -49,6 +49,7 @@ export const Checked: Story = {
     status: true,
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
+    id: 'switch-1',
   },
 };
 
@@ -57,6 +58,7 @@ export const UnChecked: Story = {
     status: false,
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
+    id: 'switch-2',
   },
 };
 
@@ -66,6 +68,7 @@ export const Disabled: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
     disabled: true,
+    id: 'switch-3',
   },
 };
 
@@ -75,6 +78,7 @@ export const UncheckedDisabled: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
     disabled: true,
+    id: 'switch-4',
   },
 };
 
@@ -84,6 +88,7 @@ export const LeftLabel: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
     labelPosition: 'left',
+    id: 'switch-5',
   },
 };
 
@@ -93,6 +98,7 @@ export const RightLabel: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
     labelPosition: 'right',
+    id: 'switch-6',
   },
 };
 
@@ -102,6 +108,7 @@ export const LargeSwitch: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
     size: 'lg',
+    id: 'switch-7',
   },
 };
 
@@ -111,5 +118,6 @@ export const MediumSwitch: Story = {
     onChange: (checked: boolean) => console.log(`Switched to ${checked}`),
     label: 'Switch',
     size: 'md',
+    id: 'switch-8',
   },
 };
