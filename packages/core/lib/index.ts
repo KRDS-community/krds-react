@@ -15,6 +15,7 @@ import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
 import { Switch } from './components/Switch';
 import { Chip } from './components/Chip';
+import { Checkbox } from './components/Checkbox';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge, Switch, Chip };
+export { Button, LinkButton, Tag, Spinner, Badge, Switch, Chip, Checkbox };
