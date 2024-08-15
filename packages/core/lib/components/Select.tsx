@@ -105,6 +105,7 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       onClick,
       isSelected,
       children,
+      isHovered,
       onKeyDown,
       onMouseEnter,
       onMouseLeave,
@@ -119,7 +120,8 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       aria-selected={isSelected}
       className={`w-full p-3 text-left px-6 rounded-md
         ${isSelected ? 'text-blue-500' : 'text-gray-900'}
-        focus:outline-none focus:bg-blue-100 focus:text-blue-500`}
+        ${isHovered ? 'bg-blue-100 text-blue-500' : ''}
+        `}
       ref={ref}
     >
       {children}
@@ -137,6 +139,18 @@ const Select = ({ options, placeholder }: SelectProps) => {
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    if (focusedIndex !== null && itemRefs.current[focusedIndex]) {
+      itemRefs.current[focusedIndex]?.focus(); // Sync focus with hovered item
+    }
+  }, [focusedIndex]);
+
+  useEffect(() => {
+    if (isOpen && hoveredIndex !== null) {
+      setFocusedIndex(hoveredIndex); // Sync focus with hovered index
+    }
+  }, [isOpen, hoveredIndex]);
+
+  useEffect(() => {
     if (selectedValue) {
       const index = options.findIndex(
         (option) => option.value === selectedValue
@@ -152,7 +166,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
   const handleSelect = (value: string) => {
     setSelectedValue(value);
     setIsOpen(false);
-    triggerRef.current?.focus(); // Return focus to the trigger
+    triggerRef.current?.focus(); // Return focus to trigger
   };
 
   const handleKeyDown = useCallback(
@@ -168,7 +182,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
           break;
         case 'Escape':
           setIsOpen(false);
-          triggerRef.current?.focus();
+          triggerRef.current?.focus(); // Return focus to trigger
           break;
         case 'ArrowDown':
           e.preventDefault();
@@ -222,12 +236,6 @@ const Select = ({ options, placeholder }: SelectProps) => {
   );
 
   useEffect(() => {
-    if (isOpen && focusedIndex !== null && itemRefs.current[focusedIndex]) {
-      itemRefs.current[focusedIndex]?.focus();
-    }
-  }, [isOpen, focusedIndex]);
-
-  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         triggerRef.current &&
@@ -267,7 +275,6 @@ const Select = ({ options, placeholder }: SelectProps) => {
               onKeyDown={handleItemKeyDown(index)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => {
-                // Remove hover state when mouse leaves
                 if (focusedIndex !== index) {
                   setHoveredIndex(null);
                 }
