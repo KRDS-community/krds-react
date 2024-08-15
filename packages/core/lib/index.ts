@@ -14,6 +14,7 @@ import { Tag } from './components/Tag';
 import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
 import { Accordion } from './components/Accordion';
+import { Disclosure } from './components/Disclosure';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge, Accordion };
+export { Button, LinkButton, Tag, Spinner, Badge, Accordion, Disclosure };
