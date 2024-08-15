@@ -24,15 +24,15 @@ const Tab: React.FC<{
       aria-controls={panelId}
       id={id}
       onClick={onClick}
-      className={`px-6 py-3 focus:outline-none focus:ring-2 focus:ring-primary-50 transition-all duration-400 ease-in-out
+      className={`px-6 py-3 focus:outline-none focus:ring-2 focus:ring-primary-50 transition-all duration-400 ease-in-out rounded-2'
         ${
           isSelected
-            ? 'border-b-4 border-primary'
-            : 'text-gray-50 hover:text-gray-70 border-b-4 border-transparent'
+            ? 'border-b-4 border-primary hover:bg-secondary-5'
+            : 'border-b-4 border-transparent hover:bg-secondary-5'
         }`}
     >
       <Label
-        color={isSelected ? 'primary' : 'gray-60'}
+        color={isSelected ? 'primary' : 'gray-50'}
         className={
           isSelected ? 'cursor-pointer' : 'cursor-pointer hover:text-gray-70'
         }
@@ -72,7 +72,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
       <div
         role="tablist"
         aria-label="Tab Navigation"
-        className="flex border-b border-gray-200"
+        className="flex border-b border-gray-20"
       >
         {tabs.map((tab, index) => (
           <Tab
