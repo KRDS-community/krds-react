@@ -120,10 +120,10 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       aria-selected={isSelected}
-      className={`w-full p-3 text-left px-6 rounded-md
-        ${isSelected ? 'text-blue-500' : 'text-gray-900'}
-        ${isHovered ? 'bg-blue-100 text-blue-500' : ''}
-        ${isFocused ? 'bg-blue-100 text-blue-500' : ''} 
+      className={`w-full p-3 text-left px-6 rounded-md outline-none
+        ${isSelected ? 'text-blue-500' : ''}
+        ${isHovered || isFocused ? 'bg-blue-100 text-blue-500' : ''}
+
         `}
       ref={ref}
     >
