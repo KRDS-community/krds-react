@@ -184,6 +184,14 @@ export const Pagination: React.FC<PaginationProps> = ({
     </button>
   );
 
+  const inputPageNumber = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      onPageChange(inputPage);
+      return;
+    }
+  };
+
   return (
     <nav
       aria-label={'페이지 네비게이션'}
@@ -206,6 +214,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             type="number"
             value={inputPage}
             onChange={(e) => setInputPage(parseInt(e.target.value, 10))}
+            onKeyDown={inputPageNumber}
             min={1}
             max={totalPages}
             className="w-14 px-2 py-1 border border-gray-50 rounded-2 focus:outline-none focus:ring-2 focus:ring-primary-50 text-right"
