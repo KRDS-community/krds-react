@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  forwardRef,
+} from 'react';
 
 interface Option {
   value: string;
@@ -47,7 +53,7 @@ interface SelectItemProps {
   onMouseLeave: () => void;
 }
 
-const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
+const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ onClick, children, isOpen, onKeyDown }, ref) => (
     <button
       onClick={onClick}
@@ -99,7 +105,7 @@ const SelectLabel = ({ children }: SelectLabelProps) => (
   <div className="py-2 font-semibold text-gray-700">{children}</div>
 );
 
-const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
+const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
   (
     {
       value,
@@ -107,7 +113,7 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       isSelected,
       children,
       isHovered,
-      isFocused, // 추가된 prop 사용
+      isFocused,
       onKeyDown,
       onMouseEnter,
       onMouseLeave,
@@ -139,6 +145,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const allSelectRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
@@ -190,8 +197,8 @@ const Select = ({ options, placeholder }: SelectProps) => {
         case 'ArrowDown':
           e.preventDefault();
           if (isOpen) {
-            setFocusedIndex((prev) =>
-              prev === null ? 0 : Math.min(options.length - 1, prev + 1)
+            setFocusedIndex(
+              moveFocus('down', options.length - 1, focusedIndex)
             );
             setHoveredIndex(null); // Clear hover on ArrowDown
           }
@@ -199,9 +206,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
         case 'ArrowUp':
           e.preventDefault();
           if (isOpen) {
-            setFocusedIndex((prev) =>
-              prev === null ? options.length - 1 : Math.max(0, prev - 1)
-            );
+            setFocusedIndex(moveFocus('up', options.length - 1, focusedIndex));
             setHoveredIndex(null); // Clear hover on ArrowUp
           }
           break;
@@ -221,14 +226,12 @@ const Select = ({ options, placeholder }: SelectProps) => {
           break;
         case 'ArrowDown':
           e.preventDefault();
-          setFocusedIndex((prev) =>
-            Math.min(options.length - 1, (prev ?? -1) + 1)
-          );
+          setFocusedIndex(moveFocus('down', options.length - 1, focusedIndex));
           setHoveredIndex(null); // Clear hover on ArrowDown
           break;
         case 'ArrowUp':
           e.preventDefault();
-          setFocusedIndex((prev) => Math.max(0, (prev ?? 0) - 1));
+          setFocusedIndex(moveFocus('up', options.length - 1, focusedIndex));
           setHoveredIndex(null); // Clear hover on ArrowUp
           break;
         default:
@@ -240,11 +243,11 @@ const Select = ({ options, placeholder }: SelectProps) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        triggerRef.current &&
-        !triggerRef.current.contains(event.target as Node) &&
-        !itemRefs.current.some((el) => el?.contains(event.target as Node))
-      ) {
+      if (!allSelectRef.current) {
+        return;
+      }
+
+      if (!allSelectRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -256,7 +259,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={allSelectRef}>
       <SelectTrigger
         onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen}
@@ -268,6 +271,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
       <SelectContent isOpen={isOpen}>
         <SelectGroup>
           <SelectLabel>Options</SelectLabel>
+
           {options.map((option, index) => (
             <SelectItem
               key={option.value}
@@ -275,7 +279,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
               onClick={handleSelect}
               isSelected={selectedValue === option.value}
               isHovered={hoveredIndex === index}
-              isFocused={focusedIndex === index} // 현재 포커스된 인덱스와 일치하는지 확인
+              isFocused={focusedIndex === index}
               onKeyDown={handleItemKeyDown(index)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => {
@@ -312,3 +316,15 @@ const SelectDemo = () => {
 };
 
 export default SelectDemo;
+
+const moveFocus = (
+  direction: 'up' | 'down',
+  maxIndex: number,
+  currentIndex: number | null
+) => {
+  if (direction === 'down') {
+    return currentIndex === null ? 0 : Math.min(maxIndex, currentIndex + 1);
+  } else {
+    return currentIndex === null ? maxIndex : Math.max(0, currentIndex - 1);
+  }
+};
