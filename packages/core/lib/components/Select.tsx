@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 interface Option {
   value: string;
@@ -108,9 +108,9 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       onKeyDown={onKeyDown}
       aria-selected={isSelected}
       className={`w-full p-3 text-left px-6 rounded-md
-        ${isSelected ? 'text-blue-500 bg-blue-100' : 'text-gray-900'}
-        ${isFocused ? 'bg-blue-100 text-blue-500' : 'hover:bg-blue-100 hover:text-blue-500'}
-        focus:outline-none`}
+        ${isSelected ? 'text-blue-500' : 'text-gray-900'}
+        ${isFocused || isSelected ? 'bg-blue-100 text-blue-500' : 'hover:bg-blue-100 hover:text-blue-500'}
+        focus:outline-none focus:bg-blue-100 focus:text-blue-500`}
       tabIndex={tabIndex}
       ref={ref}
     >
@@ -126,6 +126,86 @@ const Select = ({ options, placeholder }: SelectProps) => {
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Update focusedIndex when selectedValue changes
+  useEffect(() => {
+    if (selectedValue) {
+      const index = options.findIndex(
+        (option) => option.value === selectedValue
+      );
+      setFocusedIndex(index);
+    } else {
+      setFocusedIndex(null);
+    }
+  }, [selectedValue, options]);
+
+  const handleSelect = (value: string) => {
+    setSelectedValue(value);
+    setIsOpen(false);
+    triggerRef.current?.focus(); // Return focus to the trigger
+  };
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      switch (e.key) {
+        case 'Enter':
+          e.preventDefault();
+          if (isOpen && focusedIndex !== null) {
+            handleSelect(options[focusedIndex].value);
+          } else {
+            setIsOpen(!isOpen);
+          }
+          break;
+        case 'Escape':
+          setIsOpen(false);
+          triggerRef.current?.focus();
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          if (isOpen) {
+            setFocusedIndex((prev) =>
+              prev === null ? 0 : Math.min(options.length - 1, prev + 1)
+            );
+          }
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          if (isOpen) {
+            setFocusedIndex((prev) =>
+              prev === null ? options.length - 1 : Math.max(0, prev - 1)
+            );
+          }
+          break;
+        default:
+          break;
+      }
+    },
+    [isOpen, focusedIndex, options, handleSelect]
+  );
+
+  const handleItemKeyDown = useCallback(
+    (index: number) => (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      switch (e.key) {
+        case 'Enter':
+          e.preventDefault();
+          handleSelect(options[index].value);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          setFocusedIndex((prev) =>
+            Math.min(options.length - 1, (prev ?? -1) + 1)
+          );
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setFocusedIndex((prev) => Math.max(0, (prev ?? 0) - 1));
+          break;
+        default:
+          break;
+      }
+    },
+    [handleSelect, options]
+  );
 
   useEffect(() => {
     if (isOpen && focusedIndex !== null && itemRefs.current[focusedIndex]) {
@@ -149,65 +229,6 @@ const Select = ({ options, placeholder }: SelectProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  const handleSelect = (value: string) => {
-    setSelectedValue(value);
-    setIsOpen(false);
-    triggerRef.current?.focus(); // Return focus to the trigger
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    switch (e.key) {
-      case 'Enter':
-        setIsOpen(!isOpen);
-        break;
-      case 'Escape':
-        setIsOpen(false);
-        triggerRef.current?.focus();
-        break;
-      case 'ArrowDown':
-        e.preventDefault();
-        if (isOpen) {
-          setFocusedIndex((prev) => {
-            if (prev === null) return 0;
-            return Math.min(options.length - 1, prev + 1);
-          });
-        }
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        if (isOpen) {
-          setFocusedIndex((prev) => {
-            if (prev === null) return options.length - 1;
-            return Math.max(0, prev - 1);
-          });
-        }
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleItemKeyDown =
-    (index: number) => (e: React.KeyboardEvent<HTMLButtonElement>) => {
-      switch (e.key) {
-        case 'Enter':
-          handleSelect(options[index].value);
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          setFocusedIndex((prev) =>
-            Math.min(options.length - 1, (prev ?? -1) + 1)
-          );
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          setFocusedIndex((prev) => Math.max(0, (prev ?? 0) - 1));
-          break;
-        default:
-          break;
-      }
-    };
 
   return (
     <div className="relative">
@@ -247,6 +268,8 @@ const options = [
   { value: 'option2', label: 'Option 2' },
   { value: 'option3', label: 'Option 3' },
   { value: 'option4', label: 'Option 4' },
+  { value: 'option5', label: 'Option 5' },
+  { value: 'option6', label: 'Option 6' },
 ];
 
 const SelectDemo = () => {
