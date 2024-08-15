@@ -13,6 +13,7 @@ import { LinkButton } from './components/LinkButton';
 import { Tag } from './components/Tag';
 import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
+import { Modal } from './components/Modal';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge };
+export { Button, LinkButton, Tag, Spinner, Badge, Modal };
