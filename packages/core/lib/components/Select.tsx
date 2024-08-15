@@ -146,37 +146,25 @@ const Select = ({ options, placeholder }: SelectProps) => {
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const allSelectRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
-    if (focusedIndex !== null && itemRefs.current[focusedIndex]) {
-      itemRefs.current[focusedIndex]?.focus(); // Sync focus with hovered item
+    if (hoveredIndex !== null) {
+      setFocusedIndex(hoveredIndex); // Sync focus with hovered index **
     }
-  }, [focusedIndex]);
+  }, [hoveredIndex]);
 
   useEffect(() => {
-    if (isOpen && hoveredIndex !== null) {
-      setFocusedIndex(hoveredIndex); // Sync focus with hovered index
-    }
-  }, [isOpen, hoveredIndex]);
+    const selectedIndex = options.findIndex(
+      ({ value }) => value === selectedValue
+    );
 
-  useEffect(() => {
-    if (selectedValue) {
-      const index = options.findIndex(
-        (option) => option.value === selectedValue
-      );
-      setFocusedIndex(index);
-      setHoveredIndex(index); // Ensure hoveredIndex matches selectedIndex
-    } else {
-      setFocusedIndex(null);
-      setHoveredIndex(null);
-    }
+    setFocusedIndex(selectedIndex);
+    setHoveredIndex(selectedIndex); // Ensure hoveredIndex matches selectedIndex
   }, [selectedValue, options]);
 
   const handleSelect = (value: string) => {
     setSelectedValue(value);
     setIsOpen(false);
-    triggerRef.current?.focus(); // Return focus to trigger
   };
 
   const handleKeyDown = useCallback(
@@ -186,8 +174,6 @@ const Select = ({ options, placeholder }: SelectProps) => {
           e.preventDefault();
           if (isOpen && focusedIndex !== null) {
             handleSelect(options[focusedIndex].value);
-          } else {
-            setIsOpen(!isOpen);
           }
           break;
         case 'Escape':
@@ -196,19 +182,21 @@ const Select = ({ options, placeholder }: SelectProps) => {
           break;
         case 'ArrowDown':
           e.preventDefault();
-          if (isOpen) {
-            setFocusedIndex(
-              moveFocus('down', options.length - 1, focusedIndex)
-            );
-            setHoveredIndex(null); // Clear hover on ArrowDown
+          if (!isOpen) {
+            return;
           }
+          setFocusedIndex(moveFocus('down', options.length - 1, focusedIndex));
+          setHoveredIndex(null); // Clear hover on ArrowDown
+
           break;
         case 'ArrowUp':
           e.preventDefault();
-          if (isOpen) {
-            setFocusedIndex(moveFocus('up', options.length - 1, focusedIndex));
-            setHoveredIndex(null); // Clear hover on ArrowUp
+          if (!isOpen) {
+            return;
           }
+          setFocusedIndex(moveFocus('up', options.length - 1, focusedIndex));
+          setHoveredIndex(null); // Clear hover on ArrowUp
+
           break;
         default:
           break;
@@ -287,7 +275,6 @@ const Select = ({ options, placeholder }: SelectProps) => {
                   setHoveredIndex(null);
                 }
               }}
-              ref={(el) => (itemRefs.current[index] = el)}
             >
               {option.label || option.value}
             </SelectItem>
