@@ -2,6 +2,48 @@ import React, { useState } from 'react';
 import { Label } from './Label';
 import { Button } from './Button';
 
+function generateSequence(current: number, count: number): number[] {
+  const result: number[] = [];
+  const start = current - Math.floor((count - 1) / 2);
+
+  for (let i = 0; i < count; i++) {
+    result.push(start + i);
+  }
+
+  return result;
+}
+
+function generateRangeGuaranteedSequence(
+  current: number,
+  count: number,
+  min: number,
+  max: number
+): (number | string)[] {
+  const initialSequence = generateSequence(current, count);
+  const filteredSequence = initialSequence.filter(
+    (num) => num >= min && num <= max
+  );
+  const result: (number | 'ellipsis')[] = [...filteredSequence];
+
+  if (!filteredSequence.includes(min)) {
+    if (filteredSequence[0] - min > 1) {
+      result.unshift(min, 'ellipsis');
+    } else {
+      result.unshift(min);
+    }
+  }
+
+  if (!filteredSequence.includes(max)) {
+    if (max - filteredSequence[filteredSequence.length - 1] > 1) {
+      result.push('ellipsis', max);
+    } else {
+      result.push(max);
+    }
+  }
+
+  return result;
+}
+
 export const PrevIcon: React.FC = () => (
   <svg
     width="24"
@@ -76,45 +118,12 @@ export const Pagination: React.FC<PaginationProps> = ({
     1
   );
   const showTwoLines = twoLines && !allowDirectInput;
-
-  const getPageNumbers = () => {
-    const pageNumbers: (number | string)[] = [];
-    const halfVisible = Math.floor((visiblePages - 1) / 2);
-
-    if (totalPages <= visiblePages) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-
-    let startPage = Math.max(currentPage - halfVisible, 2);
-    let endPage = Math.min(currentPage + halfVisible, totalPages - 1);
-
-    if (startPage <= 2) {
-      endPage = visiblePages - 1;
-    }
-    if (endPage >= totalPages - 1) {
-      startPage = totalPages - visiblePages + 2;
-    }
-
-    pageNumbers.push(1);
-
-    if (startPage > 2) {
-      pageNumbers.push('ellipsis');
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(i);
-    }
-
-    if (endPage < totalPages - 1) {
-      pageNumbers.push('ellipsis');
-    }
-
-    if (endPage < totalPages) {
-      pageNumbers.push(totalPages);
-    }
-
-    return pageNumbers;
-  };
+  const pageNumbers = generateRangeGuaranteedSequence(
+    currentPage,
+    visiblePages,
+    1,
+    totalPages
+  );
 
   const handleDirectInput = () => {
     if (inputPage >= 1 && inputPage <= totalPages) {
@@ -126,7 +135,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const renderPageNumbers = () => (
     <ul className="flex gap-2">
-      {getPageNumbers().map((page, index) => (
+      {pageNumbers.map((page, index) => (
         <li key={index}>
           {page === 'ellipsis' ? (
             <span className="w-8 h-8 flex items-center justify-center text-gray-70">
