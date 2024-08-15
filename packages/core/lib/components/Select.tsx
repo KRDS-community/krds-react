@@ -15,7 +15,6 @@ interface SelectTriggerProps {
   children: React.ReactNode;
   isOpen: boolean;
   onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
-  ref?: React.Ref<HTMLButtonElement>;
 }
 
 interface SelectValueProps {
@@ -40,11 +39,11 @@ interface SelectItemProps {
   value: string;
   onClick: (value: string) => void;
   isSelected: boolean;
-  isFocused: boolean;
+  isHovered: boolean;
   children: React.ReactNode;
   onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
-  tabIndex: number;
-  ref: React.RefObject<HTMLButtonElement>;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
@@ -56,7 +55,8 @@ const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
       aria-haspopup="listbox"
       className={`w-[220px] py-3 px-4 border ${
         isOpen ? 'border-blue-500' : 'border-gray-300'
-      } rounded-md text-left bg-white shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 flex justify-between items-center transition-colors duration-150 ease-in-out`}
+      } rounded-md text-left bg-white shadow-sm hover:shadow-md focus:outline-none
+       focus:ring-2 focus:ring-blue-500 focus:border-blue-500 flex justify-between items-center transition-colors duration-150 ease-in-out`}
       tabIndex={0}
       ref={ref}
     >
@@ -100,18 +100,26 @@ const SelectLabel = ({ children }: SelectLabelProps) => (
 
 const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
   (
-    { value, onClick, isSelected, isFocused, children, onKeyDown, tabIndex },
+    {
+      value,
+      onClick,
+      isSelected,
+      children,
+      onKeyDown,
+      onMouseEnter,
+      onMouseLeave,
+    },
     ref
   ) => (
     <button
       onClick={() => onClick(value)}
       onKeyDown={onKeyDown}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       aria-selected={isSelected}
       className={`w-full p-3 text-left px-6 rounded-md
         ${isSelected ? 'text-blue-500' : 'text-gray-900'}
-        ${isFocused || isSelected ? 'bg-blue-100 text-blue-500' : 'hover:bg-blue-100 hover:text-blue-500'}
         focus:outline-none focus:bg-blue-100 focus:text-blue-500`}
-      tabIndex={tabIndex}
       ref={ref}
     >
       {children}
@@ -123,19 +131,21 @@ const Select = ({ options, placeholder }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Update focusedIndex when selectedValue changes
   useEffect(() => {
     if (selectedValue) {
       const index = options.findIndex(
         (option) => option.value === selectedValue
       );
       setFocusedIndex(index);
+      setHoveredIndex(index); // Ensure hoveredIndex matches selectedIndex
     } else {
       setFocusedIndex(null);
+      setHoveredIndex(null);
     }
   }, [selectedValue, options]);
 
@@ -166,6 +176,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
             setFocusedIndex((prev) =>
               prev === null ? 0 : Math.min(options.length - 1, prev + 1)
             );
+            setHoveredIndex(null); // Clear hover on ArrowDown
           }
           break;
         case 'ArrowUp':
@@ -174,6 +185,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
             setFocusedIndex((prev) =>
               prev === null ? options.length - 1 : Math.max(0, prev - 1)
             );
+            setHoveredIndex(null); // Clear hover on ArrowUp
           }
           break;
         default:
@@ -195,10 +207,12 @@ const Select = ({ options, placeholder }: SelectProps) => {
           setFocusedIndex((prev) =>
             Math.min(options.length - 1, (prev ?? -1) + 1)
           );
+          setHoveredIndex(null); // Clear hover on ArrowDown
           break;
         case 'ArrowUp':
           e.preventDefault();
           setFocusedIndex((prev) => Math.max(0, (prev ?? 0) - 1));
+          setHoveredIndex(null); // Clear hover on ArrowUp
           break;
         default:
           break;
@@ -249,9 +263,15 @@ const Select = ({ options, placeholder }: SelectProps) => {
               value={option.value}
               onClick={handleSelect}
               isSelected={selectedValue === option.value}
-              isFocused={focusedIndex === index}
+              isHovered={hoveredIndex === index}
               onKeyDown={handleItemKeyDown(index)}
-              tabIndex={focusedIndex === index ? 0 : -1}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => {
+                // Remove hover state when mouse leaves
+                if (focusedIndex !== index) {
+                  setHoveredIndex(null);
+                }
+              }}
               ref={(el) => (itemRefs.current[index] = el)}
             >
               {option.label || option.value}
