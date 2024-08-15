@@ -76,3 +76,21 @@ export const LongTitle: Story = {
     ],
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    tabs: [
+      {
+        label: 'Tab 1 Long Title',
+        content:
+          'Tab 1 Content Tab 1 Content Tab 1 Content Tab 1 Content Tab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 Content',
+      },
+      {
+        label: 'Tab 2 Long Title',
+        content:
+          'Tab 2 Content Tab 2 Content Tab 2 Content Tab 2 Content Tab 1 Content Tab 1 Content Tab 1 Content Tab 1 Content Tab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 ContentTab 1 Content',
+        disabled: true,
+      },
+    ],
+  },
+};

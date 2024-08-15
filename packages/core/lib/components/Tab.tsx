@@ -4,6 +4,7 @@ import { Label } from './Label';
 interface TabProps {
   label: string;
   content: React.ReactNode;
+  disabled?: boolean;
 }
 
 interface TabsProps {
@@ -16,7 +17,8 @@ const Tab: React.FC<{
   onClick: () => void;
   id: string;
   panelId: string;
-}> = ({ label, isSelected, onClick, id, panelId }) => {
+  disabled?: boolean;
+}> = ({ label, isSelected, onClick, id, panelId, disabled }) => {
   return (
     <button
       role="tab"
@@ -24,24 +26,29 @@ const Tab: React.FC<{
       aria-controls={panelId}
       id={id}
       onClick={onClick}
-      className={`px-6 py-3 focus:outline-none focus:ring-2 focus:ring-primary-50 transition-all duration-400 ease-in-out rounded-2'
+      disabled={disabled}
+      className={`px-6 py-3 focus:outline-none focus:ring-2 focus:ring-primary-50 transition-all duration-400 ease-in-out'
         ${
           isSelected
-            ? 'border-b-4 border-primary hover:bg-secondary-5'
-            : 'border-b-4 border-transparent hover:bg-secondary-5'
-        }`}
+            ? 'border-b-4 border-primary rounded-t-2'
+            : 'border-b-4 border-transparent rounded-t-2'
+        } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-secondary-5'}`}
     >
       <Label
         color={isSelected ? 'primary' : 'gray-50'}
         className={
-          isSelected ? 'cursor-pointer' : 'cursor-pointer hover:text-gray-70'
+          disabled
+            ? 'cursor-not-allowed'
+            : isSelected
+              ? 'cursor-pointer'
+              : 'cursor-pointer hover:text-gray-70'
         }
         size="l"
         weight="bold"
       >
         {label}
       </Label>
-      {isSelected && <span className="sr-only">(현재 탭)</span>}
+      {isSelected && <span className="sr-only">선택됨</span>}
     </button>
   );
 };
@@ -82,6 +89,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
             onClick={() => setSelectedTab(index)}
             id={`tab-${index}`}
             panelId={`panel-${index}`}
+            disabled={tab.disabled}
           />
         ))}
       </div>
