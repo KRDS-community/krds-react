@@ -40,6 +40,7 @@ interface SelectItemProps {
   onClick: (value: string) => void;
   isSelected: boolean;
   isHovered: boolean;
+  isFocused: boolean;
   children: React.ReactNode;
   onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
   onMouseEnter: () => void;
@@ -106,6 +107,7 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       isSelected,
       children,
       isHovered,
+      isFocused, // 추가된 prop 사용
       onKeyDown,
       onMouseEnter,
       onMouseLeave,
@@ -121,6 +123,7 @@ const SelectItem = React.forwardRef<HTMLButtonElement, SelectItemProps>(
       className={`w-full p-3 text-left px-6 rounded-md
         ${isSelected ? 'text-blue-500' : 'text-gray-900'}
         ${isHovered ? 'bg-blue-100 text-blue-500' : ''}
+        ${isFocused ? 'bg-blue-100 text-blue-500' : ''} 
         `}
       ref={ref}
     >
@@ -272,6 +275,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
               onClick={handleSelect}
               isSelected={selectedValue === option.value}
               isHovered={hoveredIndex === index}
+              isFocused={focusedIndex === index} // 현재 포커스된 인덱스와 일치하는지 확인
               onKeyDown={handleItemKeyDown(index)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => {
