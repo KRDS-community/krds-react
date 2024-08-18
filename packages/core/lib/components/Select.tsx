@@ -60,6 +60,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
       onKeyDown={onKeyDown}
       aria-expanded={isOpen}
       aria-haspopup="listbox"
+      aria-label="Select an option"
       className={`w-full py-3 px-4 border ${
         isOpen ? 'border-blue-500' : 'border-gray-300'
       } rounded-md text-left bg-white shadow-sm hover:shadow-md focus:outline-none
@@ -71,7 +72,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
       <span
         className={`ml-2 inline-block transform ${
           isOpen ? 'rotate-180' : 'rotate-0'
-        }`}
+        } text-gray-800`}
       >
         ▼
       </span>
@@ -89,7 +90,7 @@ const SelectContent = ({ isOpen, children }: SelectContentProps) => (
   <div
     role="listbox"
     aria-hidden={!isOpen}
-    className={`absolute w-full border border-gray-300 rounded-md bg-white shadow-lg z-10 left-0 mt-2 ${
+    className={`absolute w-full max-h-60 overflow-y-auto border border-gray-300 rounded-md bg-white shadow-lg z-10 left-0 mt-2 ${
       isOpen ? 'block' : 'hidden'
     } transition-opacity duration-150 ease-in-out`}
   >
