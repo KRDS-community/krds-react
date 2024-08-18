@@ -60,7 +60,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
       onKeyDown={onKeyDown}
       aria-expanded={isOpen}
       aria-haspopup="listbox"
-      className={`w-[220px] py-3 px-4 border ${
+      className={`w-full py-3 px-4 border ${
         isOpen ? 'border-blue-500' : 'border-gray-300'
       } rounded-md text-left bg-white shadow-sm hover:shadow-md focus:outline-none
        focus:ring-2 focus:ring-blue-500 focus:border-blue-500 flex justify-between items-center transition-colors duration-150 ease-in-out`}
@@ -89,7 +89,7 @@ const SelectContent = ({ isOpen, children }: SelectContentProps) => (
   <div
     role="listbox"
     aria-hidden={!isOpen}
-    className={`absolute w-[220px] border border-gray-300 rounded-md bg-white shadow-lg z-10 left-0 mt-2 ${
+    className={`absolute w-full border border-gray-300 rounded-md bg-white shadow-lg z-10 left-0 mt-2 ${
       isOpen ? 'block' : 'hidden'
     } transition-opacity duration-150 ease-in-out`}
   >
