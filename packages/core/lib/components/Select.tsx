@@ -14,6 +14,7 @@ interface Option {
 interface SelectProps {
   options: Option[];
   placeholder: string;
+  size?: 'lg' | 'md' | 'sm';
 }
 
 interface SelectTriggerProps {
@@ -23,9 +24,11 @@ interface SelectTriggerProps {
   onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
+export type SelectSize = 'lg' | 'md' | 'sm';
 interface SelectValueProps {
   placeholder: string;
   selectedValue: string | null;
+  size?: SelectSize;
 }
 
 interface SelectContentProps {
@@ -39,9 +42,17 @@ interface SelectGroupProps {
 
 interface SelectLabelProps {
   children: React.ReactNode;
+  size?: SelectSize;
 }
 
+const sizeClasses = {
+  lg: 'h-12 text-lg', // Large size
+  md: 'h-10 text-base', // Medium size
+  sm: 'h-8 text-sm', // Small size
+};
+
 interface SelectItemProps {
+  size?: SelectSize;
   value: string;
   onClick: (value: string) => void;
   isSelected: boolean;
@@ -53,7 +64,7 @@ interface SelectItemProps {
   onMouseLeave: () => void;
 }
 
-const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
+export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ onClick, children, isOpen, onKeyDown }, ref) => (
     <button
       onClick={onClick}
@@ -80,13 +91,18 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
   )
 );
 
-const SelectValue = ({ selectedValue, placeholder }: SelectValueProps) => (
-  <div className="text-gray-900">
+export const SelectValue = ({
+  selectedValue,
+  placeholder,
+  size = 'md',
+}: SelectValueProps) => (
+  <div
+    className={`text-gray-900 ${sizeClasses[size]} flex items-center text-left`}
+  >
     {selectedValue ? selectedValue : placeholder}
   </div>
 );
-
-const SelectContent = ({ isOpen, children }: SelectContentProps) => (
+export const SelectContent = ({ isOpen, children }: SelectContentProps) => (
   <div
     role="listbox"
     aria-hidden={!isOpen}
@@ -98,17 +114,20 @@ const SelectContent = ({ isOpen, children }: SelectContentProps) => (
   </div>
 );
 
-const SelectGroup = ({ children }: SelectGroupProps) => (
+export const SelectGroup = ({ children }: SelectGroupProps) => (
   <div className="p-4">{children}</div>
 );
 
-const SelectLabel = ({ children }: SelectLabelProps) => (
-  <div className="py-2 font-semibold text-gray-700">{children}</div>
+export const SelectLabel = ({ children, size = 'md' }: SelectLabelProps) => (
+  <div className={`font-semibold text-gray-700 ${sizeClasses[size]}`}>
+    {children}
+  </div>
 );
 
-const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
+export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
   (
     {
+      size = 'md',
       value,
       onClick,
       isSelected,
@@ -120,26 +139,28 @@ const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
       onMouseLeave,
     },
     ref
-  ) => (
-    <button
-      onClick={() => onClick(value)}
-      onKeyDown={onKeyDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      aria-selected={isSelected}
-      className={`w-full p-3 text-left px-6 rounded-md outline-none
-        ${isSelected ? 'text-blue-500' : ''}
-        ${isHovered || isFocused ? 'bg-blue-100 text-blue-500' : ''}
-
-        `}
-      ref={ref}
-    >
-      {children}
-    </button>
-  )
+  ) => {
+    return (
+      <button
+        onClick={() => onClick(value)}
+        onKeyDown={onKeyDown}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        aria-selected={isSelected}
+        className={`w-full p-3 text-left px-6 rounded-md outline-none
+          ${sizeClasses[size]} // Apply size classes based on size prop
+          ${isSelected ? 'text-blue-500' : ''}
+          ${isHovered || isFocused ? 'bg-blue-100 text-blue-500' : ''}
+          `}
+        ref={ref}
+      >
+        {children}
+      </button>
+    );
+  }
 );
 
-const Select = ({ options, placeholder }: SelectProps) => {
+export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
@@ -255,14 +276,19 @@ const Select = ({ options, placeholder }: SelectProps) => {
         onKeyDown={handleKeyDown}
         ref={triggerRef}
       >
-        <SelectValue selectedValue={selectedValue} placeholder={placeholder} />
+        <SelectValue
+          selectedValue={selectedValue}
+          placeholder={placeholder}
+          size={size}
+        />
       </SelectTrigger>
       <SelectContent isOpen={isOpen}>
         <SelectGroup>
-          <SelectLabel>Options</SelectLabel>
+          <SelectLabel size={size}>Options</SelectLabel>
 
           {options.map((option, index) => (
             <SelectItem
+              size={size}
               key={option.value}
               value={option.value}
               onClick={handleSelect}
@@ -277,7 +303,7 @@ const Select = ({ options, placeholder }: SelectProps) => {
                 }
               }}
             >
-              {option.label || option.value}
+              {option.value}
             </SelectItem>
           ))}
         </SelectGroup>
@@ -286,24 +312,15 @@ const Select = ({ options, placeholder }: SelectProps) => {
   );
 };
 
-const options = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
-  { value: 'option4', label: 'Option 4' },
-  { value: 'option5', label: 'Option 5' },
-  { value: 'option6', label: 'Option 6' },
-];
+// export const SelectDemo = () => {
+//   return (
+//     <div className="p-4">
+//       <Select options={options} placeholder={placeholder} />
+//     </div>
+//   );
+// };
 
-const SelectDemo = () => {
-  return (
-    <div className="p-4">
-      <Select options={options} placeholder="Select an option" />
-    </div>
-  );
-};
-
-export default SelectDemo;
+// export default SelectDemo;
 
 const moveFocus = (
   direction: 'up' | 'down',
