@@ -13,8 +13,34 @@ import { LinkButton } from './components/LinkButton';
 import { Tag } from './components/Tag';
 import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
+import { TextInput } from './components/TextInput';
+import { TextArea } from './components/TextArea';
+import { Breadcrumb } from './components/Breadcrumb';
+import { Switch } from './components/Switch';
+import { Chip } from './components/Chip';
+import { Checkbox } from './components/Checkbox';
+import { RadioButtonGroup } from './components/RadioButton';
+import { Tabs } from './components/Tab';
+import { Modal } from './components/Modal';
 import { Accordion } from './components/Accordion';
 import { Disclosure } from './components/Disclosure';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge, Accordion, Disclosure };
+export {
+  Button,
+  LinkButton,
+  Tag,
+  Spinner,
+  Badge,
+  Switch,
+  Chip,
+  Checkbox,
+  RadioButtonGroup,
+  TextInput,
+  TextArea,
+  Breadcrumb,
+  Tabs,
+  Modal,
+  Accordion,
+  Disclosure,
+};
