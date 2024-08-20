@@ -20,6 +20,7 @@ import { Switch } from './components/Switch';
 import { Chip } from './components/Chip';
 import { Checkbox } from './components/Checkbox';
 import { RadioButtonGroup } from './components/RadioButton';
+import { Tabs } from './components/Tab';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
 export {
@@ -35,4 +36,5 @@ export {
   TextInput,
   TextArea,
   Breadcrumb,
+  Tabs,
 };
