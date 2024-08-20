@@ -15,6 +15,16 @@ import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
 import { TextInput } from './components/TextInput';
 import { TextArea } from './components/TextArea';
+import { Breadcrumb } from './components/Breadcrumb';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge, TextInput, TextArea };
+export {
+  Button,
+  LinkButton,
+  Tag,
+  Spinner,
+  Badge,
+  TextInput,
+  TextArea,
+  Breadcrumb,
+};
