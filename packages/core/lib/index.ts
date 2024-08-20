@@ -13,6 +13,9 @@ import { LinkButton } from './components/LinkButton';
 import { Tag } from './components/Tag';
 import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
+import { TextInput } from './components/TextInput';
+import { TextArea } from './components/TextArea';
+import { Breadcrumb } from './components/Breadcrumb';
 import { Switch } from './components/Switch';
 import { Chip } from './components/Chip';
 import { Checkbox } from './components/Checkbox';
@@ -29,4 +32,7 @@ export {
   Chip,
   Checkbox,
   RadioButtonGroup,
+  TextInput,
+  TextArea,
+  Breadcrumb,
 };
