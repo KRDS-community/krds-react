@@ -13,7 +13,18 @@ import { LinkButton } from './components/LinkButton';
 import { Tag } from './components/Tag';
 import { Spinner } from './components/Spinner';
 import { Badge } from './components/Badge';
+import { TextInput } from './components/TextInput';
+import { TextArea } from './components/TextArea';
 import { Breadcrumb } from './components/Breadcrumb';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
-export { Button, LinkButton, Tag, Spinner, Badge, Breadcrumb };
+export {
+  Button,
+  LinkButton,
+  Tag,
+  Spinner,
+  Badge,
+  TextInput,
+  TextArea,
+  Breadcrumb,
+};
