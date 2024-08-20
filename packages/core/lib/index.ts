@@ -22,6 +22,8 @@ import { Checkbox } from './components/Checkbox';
 import { RadioButtonGroup } from './components/RadioButton';
 import { Tabs } from './components/Tab';
 import { Modal } from './components/Modal';
+import { Accordion } from './components/Accordion';
+import { Disclosure } from './components/Disclosure';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
 export {
@@ -39,4 +41,6 @@ export {
   Breadcrumb,
   Tabs,
   Modal,
+  Accordion,
+  Disclosure,
 };
