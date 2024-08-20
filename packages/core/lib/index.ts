@@ -24,6 +24,7 @@ import { Tabs } from './components/Tab';
 import { Modal } from './components/Modal';
 import { Accordion } from './components/Accordion';
 import { Disclosure } from './components/Disclosure';
+import { Pagination } from './components/Pagination';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
 export {
@@ -43,4 +44,5 @@ export {
   Modal,
   Accordion,
   Disclosure,
+  Pagination,
 };
