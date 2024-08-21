@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Select options={options} placeholder="Select an option!" size="sm" />
-      {/* <div>
+      <div>
         <Display size="l">Display Large</Display>
       </div>
       <div>
@@ -177,7 +177,7 @@ function App() {
         <Link size="s" color="info-60">
           Link Small Regular
         </Link>
-      </div> */}
+      </div>
     </>
   );
 }
