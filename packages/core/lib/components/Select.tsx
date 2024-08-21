@@ -11,7 +11,7 @@ interface Option {
   label: string;
 }
 
-interface SelectProps {
+export interface SelectProps {
   options: Option[];
   placeholder: string;
   size?: 'lg' | 'md' | 'sm';
