@@ -25,6 +25,7 @@ import { Modal } from './components/Modal';
 import { Accordion } from './components/Accordion';
 import { Disclosure } from './components/Disclosure';
 import { Pagination } from './components/Pagination';
+import { FileUpload } from './components/FileUpload';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
 export {
@@ -45,4 +46,5 @@ export {
   Accordion,
   Disclosure,
   Pagination,
+  FileUpload,
 };
