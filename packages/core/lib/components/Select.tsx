@@ -312,16 +312,6 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
   );
 };
 
-// export const SelectDemo = () => {
-//   return (
-//     <div className="p-4">
-//       <Select options={options} placeholder={placeholder} />
-//     </div>
-//   );
-// };
-
-// export default SelectDemo;
-
 const moveFocus = (
   direction: 'up' | 'down',
   maxIndex: number,
