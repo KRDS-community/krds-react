@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import {
   Heading,
@@ -8,6 +9,7 @@ import {
   Label,
   Link,
   Select,
+  RadioButtonGroup,
 } from '@krds-ui/core';
 
 function App() {
@@ -19,9 +21,25 @@ function App() {
     { value: 'option5', label: 'Option 5' },
     { value: 'option6', label: 'Option 6' },
   ];
+  const [selectedValue, setSelectedValue] = useState('on');
   return (
     <>
       <Select options={options} placeholder="Select an option!" size="sm" />
+      <div>
+        <RadioButtonGroup
+          name="test-radio"
+          options={[
+            { value: 'on', label: 'On' },
+            { value: 'off', label: 'Off' },
+            { value: 'intermediate', label: 'Intermediate' },
+          ]}
+          selectedValue={selectedValue}
+          onChange={(value) => {
+            console.log(`Switched to ${value}`);
+            setSelectedValue(value);
+          }}
+        />
+      </div>
       <div>
         <Display size="l">Display Large</Display>
       </div>

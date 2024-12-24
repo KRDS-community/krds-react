@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/KRDS-community/krds-react/compare/v0.3.0...v0.4.0) (2024-08-20)
+
+
+### Features
+
+* add accordion component ([#83](https://github.com/KRDS-community/krds-react/issues/83)) ([e6f5861](https://github.com/KRDS-community/krds-react/commit/e6f58612d9d9a48308395393fb65a4bb4ad988f1))
+* add breadcrumb component ([#79](https://github.com/KRDS-community/krds-react/issues/79)) ([61f799f](https://github.com/KRDS-community/krds-react/commit/61f799fc74bfc2d06055b6ddfe9e69005e3449b5))
+* add checkbox and radioButton ([#80](https://github.com/KRDS-community/krds-react/issues/80)) ([dba7454](https://github.com/KRDS-community/krds-react/commit/dba74544d6d5e28b1c7fe8b7dc20367b81844ce5))
+* add modal component ([#82](https://github.com/KRDS-community/krds-react/issues/82)) ([d657f38](https://github.com/KRDS-community/krds-react/commit/d657f3881446e36c64bcc1ed45068442db537b3b))
+* add pagination component ([#84](https://github.com/KRDS-community/krds-react/issues/84)) ([c9df07e](https://github.com/KRDS-community/krds-react/commit/c9df07e2b335490c8133ccf8bc3fc46c244f703a))
+* add tab component ([#81](https://github.com/KRDS-community/krds-react/issues/81)) ([eb2ccda](https://github.com/KRDS-community/krds-react/commit/eb2ccdac26c5dad44ef0997d0a278f10645886dc))
+* add textArea component ([#78](https://github.com/KRDS-community/krds-react/issues/78)) ([5f68745](https://github.com/KRDS-community/krds-react/commit/5f687459b047dd73e5c39bb261b2cab42ccce266))
+* add textInput component ([#77](https://github.com/KRDS-community/krds-react/issues/77)) ([f90594f](https://github.com/KRDS-community/krds-react/commit/f90594fafe8907ea9077a14178fd723e1290323e))
+
+
+
+
+
 # [0.3.0](https://github.com/KRDS-community/krds-react/compare/v0.2.0...v0.3.0) (2024-08-10)
 
 
