@@ -67,6 +67,34 @@ Apache-2.0 라이센스를 따릅니다.
 
 <img src="./imgs/thankyounote.png" width="500" height="700"/>
 
+### 감사합니다 <3
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/lukasjhan">
+        <img src="https://avatars.githubusercontent.com/lukasjhan" width="100px;" alt="Lukas"/>
+        <br />
+        <sub><b>lukasjhan</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/yunseorim1116">
+        <img src="https://avatars.githubusercontent.com/yunseorim1116" width="100px;" alt="yunseorim1116"/>
+        <br />
+        <sub><b>yunseorim1116</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/hismethod">
+        <img src="https://avatars.githubusercontent.com/hismethod" width="100px;" alt="hismethod"/>
+        <br />
+        <sub><b>hismethod</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
 ## Contribution
 
 Issue 및 Pull Request는 언제든 환영합니다. 버그 리포트, 기능 제안, 또는 Pull Request 모두 가능합니다.
