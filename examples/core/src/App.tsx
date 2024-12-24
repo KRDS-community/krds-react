@@ -8,13 +8,23 @@ import {
   Detail,
   Label,
   Link,
+  Select,
   RadioButtonGroup,
 } from '@krds-ui/core';
 
 function App() {
+  const options = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+    { value: 'option4', label: 'Option 4' },
+    { value: 'option5', label: 'Option 5' },
+    { value: 'option6', label: 'Option 6' },
+  ];
   const [selectedValue, setSelectedValue] = useState('on');
   return (
     <>
+      <Select options={options} placeholder="Select an option!" size="sm" />
       <div>
         <RadioButtonGroup
           name="test-radio"
