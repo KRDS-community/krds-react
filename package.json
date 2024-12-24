@@ -50,7 +50,7 @@
     "lerna": "^8.1.7",
     "storybook": "^8.2.7",
     "tsx": "^4.16.2",
-    "typescript": "^5.2.2",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4"
   },
   "bundlewatch": {
