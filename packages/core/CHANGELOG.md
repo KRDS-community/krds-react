@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/lukasjhan/krds-react/compare/v0.4.0...v0.5.0) (2024-12-24)
+
+
+### Features
+
+* add calendar component ([#87](https://github.com/lukasjhan/krds-react/issues/87)) ([7edfbc8](https://github.com/lukasjhan/krds-react/commit/7edfbc80788872e5b9f7654aa172208b0fe4a005))
+* add fileUpload component ([#86](https://github.com/lukasjhan/krds-react/issues/86)) ([e113cff](https://github.com/lukasjhan/krds-react/commit/e113cfff077258e52614cc42f918fa553ae9309e))
+
+
+
+
+
 # [0.4.0](https://github.com/lukasjhan/krds-react/compare/v0.3.0...v0.4.0) (2024-08-20)
 
 
