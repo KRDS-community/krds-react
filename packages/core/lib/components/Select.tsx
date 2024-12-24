@@ -22,6 +22,7 @@ interface SelectTriggerProps {
   children: React.ReactNode;
   isOpen: boolean;
   onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
+  size?: 'lg' | 'md' | 'sm';
 }
 
 export type SelectSize = 'lg' | 'md' | 'sm';
@@ -46,9 +47,21 @@ interface SelectLabelProps {
 }
 
 const sizeClasses = {
-  lg: 'h-12 text-lg', // Large size
-  md: 'h-10 text-base', // Medium size
-  sm: 'h-8 text-sm', // Small size
+  lg: {
+    button: 'h-[56px] text-label-l', // 56px height with label-l text size
+    option: 'py-4',  // Adequate padding for 56px height
+    icon: 'h-6 w-6'
+  },
+  md: {
+    button: 'h-[48px] text-label-m', // 48px height with label-m text size
+    option: 'py-3',  // Adequate padding for 48px height
+    icon: 'h-5 w-5'
+  },
+  sm: {
+    button: 'h-[40px] text-label-s', // 40px height with label-s text size
+    option: 'py-2',  // Adequate padding for 40px height
+    icon: 'h-4 w-4'
+  }
 };
 
 interface SelectItemProps {
@@ -65,25 +78,31 @@ interface SelectItemProps {
 }
 
 export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
-  ({ onClick, children, isOpen, onKeyDown }, ref) => (
+  ({ onClick, children, isOpen, onKeyDown, size = 'md' }, ref) => (
     <button
       onClick={onClick}
       onKeyDown={onKeyDown}
       aria-expanded={isOpen}
       aria-haspopup="listbox"
       aria-label="Select an option"
-      className={`w-full py-3 px-4 border ${
-        isOpen ? 'border-blue-500' : 'border-gray-300'
-      } rounded-md text-left bg-white shadow-sm hover:shadow-md focus:outline-none
-       focus:ring-2 focus:ring-blue-500 focus:border-blue-500 flex justify-between items-center transition-colors duration-150 ease-in-out`}
+      className={`
+        w-full min-w-[240px] px-5 border
+        ${isOpen ? 'border-primary-50' : 'border-gray-30'}
+        ${sizeClasses[size].button}
+        rounded-4 text-left bg-white shadow-sm hover:shadow-md focus:outline-none
+        focus:ring-2 focus:ring-primary-50 focus:border-primary-50 
+        flex justify-between items-center transition-colors duration-150 ease-in-out
+      `}
       tabIndex={0}
       ref={ref}
     >
       {children}
       <span
-        className={`ml-2 inline-block transform ${
-          isOpen ? 'rotate-180' : 'rotate-0'
-        } text-gray-800`}
+        className={`
+          ml-2 inline-block transform
+          ${isOpen ? 'rotate-180' : 'rotate-0'}
+          text-gray-80
+        `}
       >
         ▼
       </span>
@@ -94,19 +113,18 @@ export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
 export const SelectValue = ({
   selectedValue,
   placeholder,
-  size = 'md',
+  size = 'md'
 }: SelectValueProps) => (
-  <div
-    className={`text-gray-900 ${sizeClasses[size]} flex items-center text-left`}
-  >
-    {selectedValue ? selectedValue : placeholder}
+  <div className={`text-gray-90 ${sizeClasses[size].button} flex items-center text-left`}>
+    {selectedValue || placeholder}
   </div>
 );
+
 export const SelectContent = ({ isOpen, children }: SelectContentProps) => (
   <div
     role="listbox"
     aria-hidden={!isOpen}
-    className={`absolute w-full max-h-60 overflow-y-auto border border-gray-300 rounded-md bg-white shadow-lg z-10 left-0 mt-2 ${
+    className={`absolute w-full min-w-[240px] max-h-60 overflow-y-auto border border-gray-300 rounded-md bg-white shadow-lg z-10 left-0 mt-2 ${
       isOpen ? 'block' : 'hidden'
     } transition-opacity duration-150 ease-in-out`}
   >
@@ -115,7 +133,7 @@ export const SelectContent = ({ isOpen, children }: SelectContentProps) => (
 );
 
 export const SelectGroup = ({ children }: SelectGroupProps) => (
-  <div className="p-4">{children}</div>
+  <div className="p-2">{children}</div>
 );
 
 export const SelectLabel = ({ children, size = 'md' }: SelectLabelProps) => (
@@ -125,39 +143,35 @@ export const SelectLabel = ({ children, size = 'md' }: SelectLabelProps) => (
 );
 
 export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
-  (
-    {
-      size = 'md',
-      value,
-      onClick,
-      isSelected,
-      children,
-      isHovered,
-      isFocused,
-      onKeyDown,
-      onMouseEnter,
-      onMouseLeave,
-    },
-    ref
-  ) => {
-    return (
-      <button
-        onClick={() => onClick(value)}
-        onKeyDown={onKeyDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        aria-selected={isSelected}
-        className={`w-full p-3 text-left px-6 rounded-md outline-none
-          ${sizeClasses[size]} // Apply size classes based on size prop
-          ${isSelected ? 'text-blue-500' : ''}
-          ${isHovered || isFocused ? 'bg-blue-100 text-blue-500' : ''}
-          `}
-        ref={ref}
-      >
-        {children}
-      </button>
-    );
-  }
+  ({
+    size = 'md',
+    value,
+    onClick,
+    isSelected,
+    children,
+    isHovered,
+    isFocused,
+    onKeyDown,
+    onMouseEnter,
+    onMouseLeave,
+  }, ref) => (
+    <button
+      onClick={() => onClick(value)}
+      onKeyDown={onKeyDown}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      aria-selected={isSelected}
+      className={`
+        w-full px-5 text-left rounded-4 outline-none
+        ${sizeClasses[size].button}
+        ${isSelected ? 'text-primary-50 bg-primary-5' : 'text-gray-90'}
+        ${isHovered || isFocused ? 'bg-primary-5' : ''}
+      `}
+      ref={ref}
+    >
+      {children}
+    </button>
+  )
 );
 
 export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
@@ -275,6 +289,7 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
         isOpen={isOpen}
         onKeyDown={handleKeyDown}
         ref={triggerRef}
+        size={size}
       >
         <SelectValue
           selectedValue={selectedValue}
@@ -282,17 +297,16 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
           size={size}
         />
       </SelectTrigger>
-      <SelectContent isOpen={isOpen}>
-        <SelectGroup>
-          <SelectLabel size={size}>Options</SelectLabel>
-
-          {options.map((option, index) => (
-            <SelectItem
-              size={size}
-              key={option.value}
-              value={option.value}
-              onClick={handleSelect}
-              isSelected={selectedValue === option.value}
+      {options.length > 0 && (
+        <SelectContent isOpen={isOpen}>
+          <SelectGroup>
+            {options.map((option, index) => (
+              <SelectItem
+                size={size}
+                key={option.value}
+                value={option.value}
+                onClick={handleSelect}
+                isSelected={selectedValue === option.value}
               isHovered={hoveredIndex === index}
               isFocused={focusedIndex === index}
               onKeyDown={handleItemKeyDown(index)}
@@ -308,6 +322,7 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
           ))}
         </SelectGroup>
       </SelectContent>
+    )}
     </div>
   );
 };
