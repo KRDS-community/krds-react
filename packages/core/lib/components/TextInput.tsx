@@ -22,7 +22,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       length = 'middle',
       ...props
     },
-    ref
+    ref,
   ) => {
     const inputId = id;
     const helperTextId = `${inputId}-help`;
@@ -81,5 +81,5 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         ) : null}
       </div>
     );
-  }
+  },
 );

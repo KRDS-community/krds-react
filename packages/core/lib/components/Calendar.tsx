@@ -88,7 +88,7 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
 
   const changeMonth = (delta: number) => {
     setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() + delta, 1)
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + delta, 1),
     );
   };
 
@@ -114,8 +114,17 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
             onClick={() => handleDateClick(date)}
             className={`
               cursor-pointer text-center px-2 py-1 rounded-4
-              ${isDateInRange(date) || selectedDates.some((d) => d.getTime() === date.getTime()) ? 'bg-primary text-gray-0' : ''}
-              ${isToday(date) ? 'border border-primary' : 'border border-transparent'}
+              ${
+                isDateInRange(date) ||
+                selectedDates.some((d) => d.getTime() === date.getTime())
+                  ? 'bg-primary text-gray-0'
+                  : ''
+              }
+              ${
+                isToday(date)
+                  ? 'border border-primary'
+                  : 'border border-transparent'
+              }
             `}
           >
             <Label
@@ -150,14 +159,14 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
             value={currentDate.getFullYear()}
             onChange={(e) =>
               setCurrentDate(
-                new Date(parseInt(e.target.value), currentDate.getMonth(), 1)
+                new Date(parseInt(e.target.value), currentDate.getMonth(), 1),
               )
             }
             className="mr-2 p-1 border rounded"
           >
             {Array.from(
               { length: 100 },
-              (_, i) => currentDate.getFullYear() - 100 + i + 1
+              (_, i) => currentDate.getFullYear() - 100 + i + 1,
             ).map((year) => (
               <option key={year} value={year}>
                 {year}
@@ -168,7 +177,7 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
             value={currentDate.getMonth()}
             onChange={(e) =>
               setCurrentDate(
-                new Date(today.getFullYear(), parseInt(e.target.value), 1)
+                new Date(today.getFullYear(), parseInt(e.target.value), 1),
               )
             }
             className="p-1 border rounded"

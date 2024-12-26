@@ -89,10 +89,10 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const stateClasses = disabled
     ? 'bg-gray-10 border-gray-30 text-gray-40 cursor-not-allowed'
     : status === 'on'
-      ? 'bg-primary border-primary text-gray-0'
-      : status === 'intermediate'
-        ? 'bg-primary border-primary text-gray-0'
-        : 'bg-gray-0 border-gray-30 hover:border-primary';
+    ? 'bg-primary border-primary text-gray-0'
+    : status === 'intermediate'
+    ? 'bg-primary border-primary text-gray-0'
+    : 'bg-gray-0 border-gray-30 hover:border-primary';
 
   return (
     <div
@@ -135,7 +135,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           htmlFor={id}
           size={labelSizeClasses[size]}
           color={disabled ? 'gray-40' : 'gray-90'}
-          className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} transition-all duration-300 ease-in-out`}
+          className={`${
+            disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+          } transition-all duration-300 ease-in-out`}
         >
           {label}
         </Label>

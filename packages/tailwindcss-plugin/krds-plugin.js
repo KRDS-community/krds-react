@@ -1,7 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = plugin(
-  function ({ addBase, addUtilities, addComponents, theme }) {},
+  function({ addBase, addUtilities, addComponents, theme }) {},
   {
     theme: {
       extend: {
@@ -518,5 +518,5 @@ module.exports = plugin(
         },
       },
     },
-  }
+  },
 );

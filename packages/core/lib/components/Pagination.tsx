@@ -17,11 +17,11 @@ function generateRangeGuaranteedSequence(
   current: number,
   count: number,
   min: number,
-  max: number
+  max: number,
 ): (number | string)[] {
   const initialSequence = generateSequence(current, count);
   const filteredSequence = initialSequence.filter(
-    (num) => num >= min && num <= max
+    (num) => num >= min && num <= max,
   );
   const result: (number | 'ellipsis')[] = [...filteredSequence];
 
@@ -115,14 +115,14 @@ export const Pagination: React.FC<PaginationProps> = ({
   const [inputPage, setInputPage] = useState<number>(currentPage);
   const visiblePages = Math.max(
     propVisiblePages % 2 === 0 ? propVisiblePages + 1 : propVisiblePages,
-    1
+    1,
   );
   const showTwoLines = twoLines && !allowDirectInput;
   const pageNumbers = generateRangeGuaranteedSequence(
     currentPage,
     visiblePages,
     1,
-    totalPages
+    totalPages,
   );
 
   const handleDirectInput = () => {

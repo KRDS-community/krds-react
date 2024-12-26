@@ -13,7 +13,9 @@
     "publish:release": "lerna publish --yes --no-private",
     "bundlewatch": "bundlewatch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write \"packages/**/*.{ts,tsx,js,jsx,json}\"",
+    "format:check": "prettier --check \"packages/**/*.{ts,tsx,js,jsx,json}\""
   },
   "keywords": [
     "react",
@@ -48,6 +50,7 @@
     "@types/node": "^22.0.0",
     "bundlewatch": "^0.4.0",
     "lerna": "^8.1.7",
+    "prettier": "1.19.1",
     "storybook": "^8.2.7",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",

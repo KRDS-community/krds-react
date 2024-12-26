@@ -89,7 +89,9 @@ export const Switch = ({
 
   return (
     <div
-      className={`flex ${labelSizeClasses.gap} items-center ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`flex ${labelSizeClasses.gap} items-center ${
+        disabled ? 'opacity-50 cursor-not-allowed' : ''
+      }`}
     >
       {labelPosition === 'left' && (
         <Label htmlFor={id} size={labelSizeClasses.size}>

@@ -31,21 +31,19 @@ export const Chip: React.FC<ChipProps> = ({
   }[size];
   const labelColor = disabled ? 'gray-50' : checked ? 'primary' : 'gray-90';
 
-  const baseClasses = `inline-flex items-center gap-2 rounded-3 border transition-colors duration-200 ${
-    sizeClasses[size]
-  }`;
+  const baseClasses = `inline-flex items-center gap-2 rounded-3 border transition-colors duration-200 ${sizeClasses[size]}`;
 
   const stateClasses = disabled
     ? 'bg-gray-20 text-gray-50 border-gray-30 cursor-not-allowed'
     : checked
-      ? 'bg-primary-5 text-primary border-primary hover:bg-primary-10 cursor-pointer'
-      : 'bg-gray-0 text-gray-70 border-gray-30 hover:bg-gray-20 cursor-pointer';
+    ? 'bg-primary-5 text-primary border-primary hover:bg-primary-10 cursor-pointer'
+    : 'bg-gray-0 text-gray-70 border-gray-30 hover:bg-gray-20 cursor-pointer';
 
   const iconClasses = disabled
     ? 'text-gray-40'
     : checked
-      ? 'text-primary'
-      : 'text-gray-40';
+    ? 'text-primary'
+    : 'text-gray-40';
 
   const iconSizes = {
     sm: 'w-5 h-5',

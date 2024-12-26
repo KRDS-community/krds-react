@@ -32,7 +32,11 @@ const Tab: React.FC<{
           isSelected
             ? 'border-b-4 border-primary rounded-t-2'
             : 'border-b-4 border-transparent rounded-t-2'
-        } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-secondary-5'}`}
+        } ${
+        disabled
+          ? 'opacity-50 cursor-not-allowed'
+          : 'cursor-pointer hover:bg-secondary-5'
+      }`}
     >
       <Label
         color={isSelected ? 'primary' : 'gray-50'}
@@ -40,8 +44,8 @@ const Tab: React.FC<{
           disabled
             ? 'cursor-not-allowed'
             : isSelected
-              ? 'cursor-pointer'
-              : 'cursor-pointer hover:text-gray-70'
+            ? 'cursor-pointer'
+            : 'cursor-pointer hover:text-gray-70'
         }
         size="l"
         weight="bold"

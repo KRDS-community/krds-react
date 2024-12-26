@@ -61,8 +61,8 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   const stateClasses = disabled
     ? 'bg-gray-10 border-gray-30 cursor-not-allowed'
     : checked
-      ? 'bg-gray-0 border-primary cursor-pointer'
-      : 'bg-gray-0 border-gray-30 hover:border-primary cursor-pointer';
+    ? 'bg-gray-0 border-primary cursor-pointer'
+    : 'bg-gray-0 border-gray-30 hover:border-primary cursor-pointer';
 
   return (
     <div
@@ -76,7 +76,13 @@ const RadioButton: React.FC<RadioButtonProps> = ({
       <div className={`${baseClasses} ${stateClasses}`} onClick={handleChange}>
         <div
           className={`
-            ${disabled && checked ? 'bg-gray-40' : checked ? 'bg-primary' : 'bg-transparent'}
+            ${
+              disabled && checked
+                ? 'bg-gray-40'
+                : checked
+                ? 'bg-primary'
+                : 'bg-transparent'
+            }
             rounded-full transition-all duration-300 ease-in-out
             ${innerCircleSizes[size]}
           `}
@@ -97,7 +103,9 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         htmlFor={id}
         size={labelSizeClasses[size]}
         color={disabled ? 'gray-40' : 'gray-90'}
-        className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} transition-colors duration-300`}
+        className={`${
+          disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+        } transition-colors duration-300`}
       >
         {label}
       </Label>
@@ -133,10 +141,10 @@ export const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
       if (!groupRef.current || disabled) return;
 
       const radioButtons = Array.from(
-        groupRef.current.querySelectorAll('input[type="radio"]')
+        groupRef.current.querySelectorAll('input[type="radio"]'),
       );
       const currentIndex = radioButtons.findIndex(
-        (radio) => (radio as HTMLInputElement).checked
+        (radio) => (radio as HTMLInputElement).checked,
       );
 
       let nextIndex: number;

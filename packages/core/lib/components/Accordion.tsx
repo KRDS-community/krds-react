@@ -7,7 +7,9 @@ const ChevronIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) => (
     viewBox="0 0 24 24"
     width="24"
     height="24"
-    className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+    className={`transition-transform duration-300 ${
+      isOpen ? 'rotate-180' : ''
+    }`}
     aria-hidden="true"
   >
     <path
@@ -31,8 +33,12 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   onClick,
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
-  const buttonId = `accordion-button-${title.replace(/\s+/g, '-').toLowerCase()}`;
-  const contentId = `accordion-content-${title.replace(/\s+/g, '-').toLowerCase()}`;
+  const buttonId = `accordion-button-${title
+    .replace(/\s+/g, '-')
+    .toLowerCase()}`;
+  const contentId = `accordion-content-${title
+    .replace(/\s+/g, '-')
+    .toLowerCase()}`;
 
   return (
     <div className="w-full border-b border-gray-20">

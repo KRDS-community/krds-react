@@ -21,7 +21,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       onChange,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [charCount, setCharCount] = useState(0);
 
@@ -75,5 +75,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         </div>
       </div>
     );
-  }
+  },
 );
