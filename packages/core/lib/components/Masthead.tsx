@@ -1,16 +1,16 @@
-import { colors } from "../colors/color";
-import { Label } from "./Label";
+import { colors } from '../colors/color';
+import { Label } from './Label';
 
 export type MastheadProps<E extends React.ElementType> = {
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
 
-export const Masthead = <E extends React.ElementType = "div">({
-  className = "",
+export const Masthead = <E extends React.ElementType = 'div'>({
+  className = '',
   ...props
 }: MastheadProps<E>) => {
   const flagStyle = {
-    display: "inline-block",
+    display: 'inline-block',
     width: 24,
     height: 16,
   };
@@ -26,9 +26,9 @@ export const Masthead = <E extends React.ElementType = "div">({
         <RepublicOfKoreaFlagIcon style={flagStyle} />
         <Label
           size="s"
-          color={"gray-90"}
+          color={'gray-90'}
           style={{
-            display: "inline-block",
+            display: 'inline-block',
           }}
         >
           이 누리집은 대한민국 공식 전자정부 누리집입니다.

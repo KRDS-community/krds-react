@@ -25,8 +25,12 @@ interface DisclosureProps {
 export const Disclosure: React.FC<DisclosureProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const buttonId = `disclosure-button-${title.replace(/\s+/g, '-').toLowerCase()}`;
-  const contentId = `disclosure-content-${title.replace(/\s+/g, '-').toLowerCase()}`;
+  const buttonId = `disclosure-button-${title
+    .replace(/\s+/g, '-')
+    .toLowerCase()}`;
+  const contentId = `disclosure-content-${title
+    .replace(/\s+/g, '-')
+    .toLowerCase()}`;
 
   const toggleDisclosure = () => {
     setIsOpen(!isOpen);

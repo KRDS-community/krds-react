@@ -68,8 +68,8 @@ export const FileUpload: React.FC<FileUploadComponentProps> = ({
         prevFiles.map((f) =>
           f.name === fileData.name
             ? { ...f, status: success ? 'success' : 'error' }
-            : f
-        )
+            : f,
+        ),
       );
     }
   };
@@ -167,7 +167,11 @@ export const FileUpload: React.FC<FileUploadComponentProps> = ({
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
         className={`border-2 border-dashed rounded-lg px-10 py-12 text-center cursor-pointer
-          ${isDragActive ? 'border-primary-80' : 'border-gray-30 hover:border-primary'}`}
+          ${
+            isDragActive
+              ? 'border-primary-80'
+              : 'border-gray-30 hover:border-primary'
+          }`}
       >
         <input
           type="file"

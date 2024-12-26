@@ -49,19 +49,19 @@ interface SelectLabelProps {
 const sizeClasses = {
   lg: {
     button: 'h-[56px] text-label-l', // 56px height with label-l text size
-    option: 'py-4',  // Adequate padding for 56px height
-    icon: 'h-6 w-6'
+    option: 'py-4', // Adequate padding for 56px height
+    icon: 'h-6 w-6',
   },
   md: {
     button: 'h-[48px] text-label-m', // 48px height with label-m text size
-    option: 'py-3',  // Adequate padding for 48px height
-    icon: 'h-5 w-5'
+    option: 'py-3', // Adequate padding for 48px height
+    icon: 'h-5 w-5',
   },
   sm: {
     button: 'h-[40px] text-label-s', // 40px height with label-s text size
-    option: 'py-2',  // Adequate padding for 40px height
-    icon: 'h-4 w-4'
-  }
+    option: 'py-2', // Adequate padding for 40px height
+    icon: 'h-4 w-4',
+  },
 };
 
 interface SelectItemProps {
@@ -107,15 +107,17 @@ export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
         ▼
       </span>
     </button>
-  )
+  ),
 );
 
 export const SelectValue = ({
   selectedValue,
   placeholder,
-  size = 'md'
+  size = 'md',
 }: SelectValueProps) => (
-  <div className={`text-gray-90 ${sizeClasses[size].button} flex items-center text-left`}>
+  <div
+    className={`text-gray-90 ${sizeClasses[size].button} flex items-center text-left`}
+  >
     {selectedValue || placeholder}
   </div>
 );
@@ -143,18 +145,21 @@ export const SelectLabel = ({ children, size = 'md' }: SelectLabelProps) => (
 );
 
 export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
-  ({
-    size = 'md',
-    value,
-    onClick,
-    isSelected,
-    children,
-    isHovered,
-    isFocused,
-    onKeyDown,
-    onMouseEnter,
-    onMouseLeave,
-  }, ref) => (
+  (
+    {
+      size = 'md',
+      value,
+      onClick,
+      isSelected,
+      children,
+      isHovered,
+      isFocused,
+      onKeyDown,
+      onMouseEnter,
+      onMouseLeave,
+    },
+    ref,
+  ) => (
     <button
       onClick={() => onClick(value)}
       onKeyDown={onKeyDown}
@@ -171,7 +176,7 @@ export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
     >
       {children}
     </button>
-  )
+  ),
 );
 
 export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
@@ -191,7 +196,7 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
 
   useEffect(() => {
     const selectedIndex = options.findIndex(
-      ({ value }) => value === selectedValue
+      ({ value }) => value === selectedValue,
     );
 
     setFocusedIndex(selectedIndex);
@@ -238,7 +243,7 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
           break;
       }
     },
-    [isOpen, focusedIndex, options, handleSelect]
+    [isOpen, focusedIndex, options, handleSelect],
   );
 
   const handleItemKeyDown = useCallback(
@@ -262,7 +267,7 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
           break;
       }
     },
-    [handleSelect, options]
+    [handleSelect, options],
   );
 
   useEffect(() => {
@@ -307,22 +312,22 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
                 value={option.value}
                 onClick={handleSelect}
                 isSelected={selectedValue === option.value}
-              isHovered={hoveredIndex === index}
-              isFocused={focusedIndex === index}
-              onKeyDown={handleItemKeyDown(index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => {
-                if (focusedIndex !== index) {
-                  setHoveredIndex(null);
-                }
-              }}
-            >
-              {option.value}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    )}
+                isHovered={hoveredIndex === index}
+                isFocused={focusedIndex === index}
+                onKeyDown={handleItemKeyDown(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => {
+                  if (focusedIndex !== index) {
+                    setHoveredIndex(null);
+                  }
+                }}
+              >
+                {option.value}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      )}
     </div>
   );
 };
@@ -330,7 +335,7 @@ export const Select = ({ options, placeholder, size = 'md' }: SelectProps) => {
 const moveFocus = (
   direction: 'up' | 'down',
   maxIndex: number,
-  currentIndex: number | null
+  currentIndex: number | null,
 ) => {
   if (direction === 'down') {
     return currentIndex === null ? 0 : Math.min(maxIndex, currentIndex + 1);
