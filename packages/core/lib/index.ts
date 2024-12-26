@@ -28,6 +28,7 @@ import { Pagination } from "./components/Pagination";
 import { FileUpload } from "./components/FileUpload";
 import { Calendar } from "./components/Calendar";
 import { Select } from "./components/Select";
+import { Masthead } from "./components/Masthead";
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
 export {
@@ -51,4 +52,5 @@ export {
   FileUpload,
   Calendar,
   Select,
+  Masthead,
 };
