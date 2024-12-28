@@ -6,6 +6,7 @@ export type LinkProps<E extends React.ElementType> = {
   color?: Color;
   children: React.ReactNode;
   className?: string;
+  title?: string;
 } & React.ComponentPropsWithoutRef<E>;
 
 export const Link = <E extends React.ElementType = 'a'>({
@@ -14,6 +15,7 @@ export const Link = <E extends React.ElementType = 'a'>({
   color = 'gray-90',
   children,
   className = '',
+  title,
   ...props
 }: LinkProps<E>) => {
   const sizeClass = {
@@ -31,6 +33,8 @@ export const Link = <E extends React.ElementType = 'a'>({
   return (
     <a
       className={`${sizeClass} ${weightClass} ${textColorClass} ${className}`}
+      title={title}
+      aria-label={title}
       {...props}
     >
       {children}

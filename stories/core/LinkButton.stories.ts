@@ -33,6 +33,7 @@ export const Accent: Story = {
     variant: 'accent',
     children: '링크 버튼: Accent',
     link: 'https://uiux.egovframe.go.kr/guide/index.html',
+    title: 'uiux.egovframe.go.kr 이동',
   },
 };
 
@@ -40,6 +41,7 @@ export const Default: Story = {
   args: {
     children: '링크 버튼: Default',
     link: 'https://uiux.egovframe.go.kr/guide/index.html',
+    title: 'uiux.egovframe.go.kr 이동',
   },
 };
 
@@ -47,6 +49,7 @@ export const Small: Story = {
   args: {
     children: '링크 버튼: Default',
     link: 'https://uiux.egovframe.go.kr/guide/index.html',
+    title: 'uiux.egovframe.go.kr 이동',
     size: 'small',
   },
 };
@@ -55,6 +58,7 @@ export const Medium: Story = {
   args: {
     children: '링크 버튼: Default',
     link: 'https://uiux.egovframe.go.kr/guide/index.html',
+    title: 'uiux.egovframe.go.kr 이동',
     size: 'medium',
   },
 };
@@ -63,6 +67,7 @@ export const Large: Story = {
   args: {
     children: '링크 버튼: Default',
     link: 'https://uiux.egovframe.go.kr/guide/index.html',
+    title: 'uiux.egovframe.go.kr 이동',
     size: 'large',
   },
 };
@@ -71,6 +76,7 @@ export const popupLink: Story = {
   args: {
     children: '팝업 링크 버튼',
     link: 'https://uiux.egovframe.go.kr/guide/index.html',
+    title: 'uiux.egovframe.go.kr 이동',
     target: '_blank',
     rel: 'noopener noreferrer',
   },

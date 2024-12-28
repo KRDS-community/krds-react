@@ -8,6 +8,7 @@ export type LinkButtonProps<E extends React.ElementType> = {
   children: React.ReactNode;
   className?: string;
   link: string;
+  title?: string;
 } & React.ComponentPropsWithoutRef<E>;
 
 export const LinkButton = <E extends React.ElementType = 'a'>({
@@ -16,6 +17,7 @@ export const LinkButton = <E extends React.ElementType = 'a'>({
   children,
   className = '',
   link,
+  title,
   ...props
 }: LinkButtonProps<E>) => {
   const baseStyles =
@@ -52,6 +54,7 @@ export const LinkButton = <E extends React.ElementType = 'a'>({
       href={link}
       role="link"
       weight={variantStyles.weight}
+      title={title}
       {...props}
     >
       {children}
