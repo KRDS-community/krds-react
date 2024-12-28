@@ -1,2 +1,5 @@
 *.config.ts
 *.config.js
+**/dist/**
+**/node_modules/**
+**/build/**
