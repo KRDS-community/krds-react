@@ -1,22 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { CriticalAlert } from '../../packages/core/lib';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 export default {
     title: 'Components/CriticalAlert',
     component: CriticalAlert,
     tags: ['autodocs'],
     parameters: {
-        backgrounds: { default: 'dark' },
-        
-        viewport: {
-            defaultViewport: 'desktop',
-            viewport: {
-                viewports: INITIAL_VIEWPORTS,
-                defaultViewport: 'ipad',
-            },
-        },
+        backgrounds: { default: 'dark' }        
     },
 } as Meta<typeof CriticalAlert>;
 
