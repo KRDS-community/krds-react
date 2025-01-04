@@ -4,6 +4,15 @@ module.exports = plugin(
   function({ addBase, addUtilities, addComponents, theme }) {},
   {
     theme: {
+      screens: {
+        // If you need more info about this, check https://uiux.egovframe.go.kr/guide/style/style_05.html
+        // ~600px: mobile
+        mobile: '360px',
+        // 601px ~ 1024px: tablet
+        tablet: '601px',
+        // 1025px ~: desktop
+        desktop: '1025px',
+      },
       extend: {
         colors: {
           primary: {
