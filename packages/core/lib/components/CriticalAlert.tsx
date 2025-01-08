@@ -129,7 +129,11 @@ const MoreLinkButton = ({ link, title }: { link: string; title?: string }) => {
         textDecoration: 'none',
       }}
     >
-      <Label color="gray-100" size="m" className="hidden md:inline-block cursor-pointer">
+      <Label
+        color="gray-100"
+        size="m"
+        className="hidden md:inline-block cursor-pointer"
+      >
         자세히보기
       </Label>
       <ArrowIcon />
