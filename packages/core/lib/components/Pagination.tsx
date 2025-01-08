@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Label } from './Label';
 import { Button } from './Button';
 
@@ -112,6 +113,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   allowDirectInput = false,
   twoLines = false,
 }) => {
+  const { t } = useTranslation();
   const [inputPage, setInputPage] = useState<number>(currentPage);
   const visiblePages = Math.max(
     propVisiblePages % 2 === 0 ? propVisiblePages + 1 : propVisiblePages,
@@ -150,7 +152,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                   : 'text-gray-70 hover:bg-gray-20'
               }`}
               aria-current={currentPage === page ? 'page' : undefined}
-              aria-label={`페이지 ${page}`}
+              aria-label={t('pagination.page') + ' ' + page}
             >
               {page}
             </button>
@@ -165,10 +167,10 @@ export const Pagination: React.FC<PaginationProps> = ({
       onClick={() => onPageChange(currentPage - 1)}
       disabled={currentPage === 1}
       className="flex items-center text-gray-70 justify-center p-2 pr-4 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-50 disabled:opacity-50 hover:bg-gray-20"
-      aria-label="이전 페이지"
+      aria-label={t('pagination.previous')}
     >
       <PrevIcon />
-      이전
+      {t('pagination.previous')}
     </button>
   );
 
@@ -177,9 +179,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       onClick={() => onPageChange(currentPage + 1)}
       disabled={currentPage === totalPages}
       className="flex items-center text-gray-70 justify-center p-2 pl-4 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-50 disabled:opacity-50 hover:bg-gray-20"
-      aria-label="다음 페이지"
+      aria-label={t('pagination.next')}
     >
-      다음
+      {t('pagination.next')}
       <NextIcon />
     </button>
   );
@@ -194,7 +196,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <nav
-      aria-label={'페이지 네비게이션'}
+      aria-label={t('pagination.pageNavigation')}
       className={`${'flex items-center gap-6 flex-col'}`}
     >
       {showTwoLines && (
@@ -218,10 +220,10 @@ export const Pagination: React.FC<PaginationProps> = ({
             min={1}
             max={totalPages}
             className="w-14 px-2 py-1 border border-gray-50 rounded-2 focus:outline-none focus:ring-2 focus:ring-primary-50 text-right"
-            aria-label="페이지 직접 입력"
+            aria-label={t('pagination.directInput')}
           />
           <Label size="s" color="gray-60">
-            / {totalPages}
+            {t('pagination.of')} {totalPages}
           </Label>
           <Button
             onClick={handleDirectInput}
@@ -229,7 +231,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             variant="secondary"
             className="focus:outline-none focus:ring-2 focus:ring-primary-50 ml-4"
           >
-            이동
+            {t('pagination.move')}
           </Button>
         </div>
       )}

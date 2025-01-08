@@ -1,0 +1,32 @@
+export default {
+  pagination: {
+    previous: '이전',
+    next: '다음',
+    page: '페이지',
+    of: '/',
+    move: '이동',
+    pageNavigation: '페이지 네비게이션',
+    directInput: '페이지 직접 입력',
+  },
+  calendar: {
+    days: ['일', '월', '화', '수', '목', '금', '토'],
+    months: [
+      '1월',
+      '2월',
+      '3월',
+      '4월',
+      '5월',
+      '6월',
+      '7월',
+      '8월',
+      '9월',
+      '10월',
+      '11월',
+      '12월',
+    ],
+    year: '년',
+    month: '월',
+    previousMonth: '이전 달',
+    nextMonth: '다음 달',
+  },
+} as const;

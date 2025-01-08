@@ -1,4 +1,5 @@
 import './index.css';
+import './i18n';
 import { Display } from './components/Display';
 import { Heading } from './components/Heading';
 import { Title } from './components/Title';
