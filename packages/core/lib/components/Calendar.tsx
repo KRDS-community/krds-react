@@ -47,6 +47,14 @@ const TriangleIcon: React.FC<{ direction: 'left' | 'right' }> = ({
 );
 
 function getYearOptions(minYear: number, maxYear: number): number[] {
+  if (minYear >= maxYear) {
+    console.warn(
+      'minYear must be less than maxYear. Using default year range.',
+    );
+    const currentYear = new Date().getFullYear();
+    return Array.from({ length: 101 }, (_, i) => currentYear - 100 + i);
+  }
+
   return Array.from(
     {
       length: maxYear - minYear + 1,
