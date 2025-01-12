@@ -29,6 +29,7 @@ import { FileUpload } from './components/FileUpload';
 import { Calendar } from './components/Calendar';
 import { Select } from './components/Select';
 import { Masthead } from './components/Masthead';
+import { CriticalAlert } from './components/CriticalAlert';
 
 export { Display, Heading, Title, Body, Detail, Label, Link, colors };
 export {
@@ -53,4 +54,5 @@ export {
   Calendar,
   Select,
   Masthead,
+  CriticalAlert,
 };
