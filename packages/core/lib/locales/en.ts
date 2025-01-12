@@ -1,0 +1,32 @@
+export default {
+  pagination: {
+    previous: 'Previous',
+    next: 'Next',
+    page: 'Page',
+    of: 'of',
+    move: 'Move',
+    pageNavigation: 'Page Navigation',
+    directInput: 'Direct page input',
+  },
+  calendar: {
+    days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    year: 'Year',
+    month: 'Month',
+    previousMonth: 'Previous Month',
+    nextMonth: 'Next Month',
+  },
+} as const;

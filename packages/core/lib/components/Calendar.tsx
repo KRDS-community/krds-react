@@ -1,27 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Label } from './Label';
 
 interface CalendarProps {
   mode: 'single' | 'range';
   onSelect: (dates: string[]) => void;
 }
-
-const today = new Date();
-const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
-const MONTHS = [
-  '1월',
-  '2월',
-  '3월',
-  '4월',
-  '5월',
-  '6월',
-  '7월',
-  '8월',
-  '9월',
-  '10월',
-  '11월',
-  '12월',
-];
 
 const TriangleIcon: React.FC<{ direction: 'left' | 'right' }> = ({
   direction,
@@ -45,8 +29,16 @@ const TriangleIcon: React.FC<{ direction: 'left' | 'right' }> = ({
 );
 
 export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
+  const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDates, setSelectedDates] = useState<Date[]>([]);
+
+  const DAYS = (t('calendar.days', {
+    returnObjects: true,
+  }) as unknown) as string[];
+  const MONTHS = (t('calendar.months', {
+    returnObjects: true,
+  }) as unknown) as string[];
 
   const getDaysInMonth = (date: Date): Date[] => {
     const year = date.getFullYear();
@@ -151,6 +143,7 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
         <button
           onClick={() => changeMonth(-1)}
           className="p-2 focus:outline-none"
+          aria-label={t('calendar.previousMonth')}
         >
           <TriangleIcon direction="left" />
         </button>
@@ -163,6 +156,7 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
               )
             }
             className="mr-2 p-1 border rounded"
+            aria-label={t('calendar.year')}
           >
             {Array.from(
               { length: 100 },
@@ -177,10 +171,15 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
             value={currentDate.getMonth()}
             onChange={(e) =>
               setCurrentDate(
-                new Date(today.getFullYear(), parseInt(e.target.value), 1),
+                new Date(
+                  currentDate.getFullYear(),
+                  parseInt(e.target.value),
+                  1,
+                ),
               )
             }
             className="p-1 border rounded"
+            aria-label={t('calendar.month')}
           >
             {MONTHS.map((month, index) => (
               <option key={month} value={index}>
@@ -192,6 +191,7 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
         <button
           onClick={() => changeMonth(1)}
           className="p-2 focus:outline-none"
+          aria-label={t('calendar.nextMonth')}
         >
           <TriangleIcon direction="right" />
         </button>
