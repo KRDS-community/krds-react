@@ -4,6 +4,8 @@ import { Label } from './Label';
 interface CalendarProps {
   mode: 'single' | 'range';
   onSelect: (dates: string[]) => void;
+  minYear?: number;
+  maxYear?: number;
 }
 
 const today = new Date();
@@ -44,9 +46,35 @@ const TriangleIcon: React.FC<{ direction: 'left' | 'right' }> = ({
   </svg>
 );
 
-export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
+function getYearOptions(minYear: number, maxYear: number): number[] {
+  if (minYear >= maxYear) {
+    console.warn(
+      'minYear must be less than maxYear. Using default year range.',
+    );
+    const currentYear = new Date().getFullYear();
+    return Array.from({ length: 101 }, (_, i) => currentYear - 100 + i);
+  }
+
+  return Array.from(
+    {
+      length: maxYear - minYear + 1,
+    },
+    (_, i) => minYear + i,
+  );
+}
+
+export const Calendar: React.FC<CalendarProps> = ({
+  mode,
+  onSelect,
+  minYear,
+  maxYear,
+}) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDates, setSelectedDates] = useState<Date[]>([]);
+  const YEARS = getYearOptions(
+    minYear || new Date().getFullYear() - 100,
+    maxYear || new Date().getFullYear(),
+  );
 
   const getDaysInMonth = (date: Date): Date[] => {
     const year = date.getFullYear();
@@ -164,10 +192,7 @@ export const Calendar: React.FC<CalendarProps> = ({ mode, onSelect }) => {
             }
             className="mr-2 p-1 border rounded"
           >
-            {Array.from(
-              { length: 100 },
-              (_, i) => currentDate.getFullYear() - 100 + i + 1,
-            ).map((year) => (
+            {YEARS.map((year) => (
               <option key={year} value={year}>
                 {year}
               </option>
