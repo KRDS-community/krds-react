@@ -10,7 +10,23 @@ import {
   Link,
   Select,
   RadioButtonGroup,
+  Calendar,
 } from '@krds-ui/core';
+import { useTranslation } from 'react-i18next';
+
+const LanguageSelector = () => {
+  const { i18n } = useTranslation();
+
+  return (
+    <select
+      value={i18n.language}
+      onChange={(e) => i18n.changeLanguage(e.target.value)}
+    >
+      <option value="ko">한국어</option>
+      <option value="en">English</option>
+    </select>
+  );
+};
 
 function App() {
   const options = [
@@ -24,6 +40,8 @@ function App() {
   const [selectedValue, setSelectedValue] = useState('on');
   return (
     <>
+      <LanguageSelector />
+      <Calendar mode="single" onSelect={(date) => console.log(date)} />
       <Select options={options} placeholder="Select an option!" size="sm" />
       <div>
         <RadioButtonGroup

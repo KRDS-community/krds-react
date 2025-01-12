@@ -74,12 +74,18 @@ importers:
       '@krds-ui/core':
         specifier: workspace:*
         version: link:../../packages/core
+      i18next:
+        specifier: ^24.2.1
+        version: 24.2.1(typescript@5.5.4)
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-i18next:
+        specifier: ^15.4.0
+        version: 15.4.0(i18next@24.2.1(typescript@5.5.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/react':
         specifier: ^18.3.3
