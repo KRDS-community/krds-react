@@ -7,7 +7,7 @@ KRDS-React는 대한민국 정부 디지털 서비스 UI/UX 가이드라인에 �
 - 대한민국 정부 디지털 서비스 UI/UX 가이드라인 준수
 - React와 tailwindcss 기반의 재사용 가능한 UI 컴포넌트 제공
 - TypeScript 지원
-- 각 컴포넌트별 라이브러리 배포를 통해 필요한 컴포넌트만 사용 가능
+- Storybook 통한 컴포넌트 문서화
 
 ## 설치
 
