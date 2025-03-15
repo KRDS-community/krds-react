@@ -223,7 +223,7 @@ module.exports = plugin(
             90: '#0A290A',
           },
           lime: {
-            5: '#F7FEA',
+            5: '#F7FFEA',
             10: '#EEFEDA',
             20: '#DCFFAB',
             30: '#CEFE83',
