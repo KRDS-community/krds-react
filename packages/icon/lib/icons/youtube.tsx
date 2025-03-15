@@ -5,7 +5,7 @@ export const YoutubeIcon: React.FC<{
   height?: number;
   className?: string;
   color?: string;
-}> = ({ width = 24, height = 24, className, color = '#33363D' }) => {
+}> = ({ width = 24, height = 24, className, color = '#303336' }) => {
   return (
     <svg
       width={width}

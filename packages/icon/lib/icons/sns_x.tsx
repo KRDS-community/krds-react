@@ -5,7 +5,12 @@ export const SnsXIcon: React.FC<{
   height?: number;
   className?: string;
   color?: string;
-}> = ({ width = 24, height = 24, className, color = '#33363D' }) => {
+}> = ({
+  width = 24,
+  height = 24,
+  className,
+  color = '#303336'
+}) => {
   return (
     <svg
       width={width}
@@ -15,7 +20,10 @@ export const SnsXIcon: React.FC<{
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path d="M13.6173 10.6218L19.9459 3H18.4463L12.9511 9.61788L8.56215 3H3.5L10.137 13.0074L3.5 21H4.99977L10.8028 14.0113L15.4379 21H20.5L13.6169 10.6218H13.6173ZM11.5632 13.0956L10.8907 12.0991L5.54016 4.16971H7.84371L12.1617 10.5689L12.8341 11.5655L18.447 19.8835H16.1434L11.5632 13.096V13.0956Z" fill={color}/>
+      <path
+        d="M13.6173 10.6218L19.9459 3H18.4463L12.9511 9.61788L8.56215 3H3.5L10.137 13.0074L3.5 21H4.99977L10.8028 14.0113L15.4379 21H20.5L13.6169 10.6218H13.6173ZM11.5632 13.0956L10.8907 12.0991L5.54016 4.16971H7.84371L12.1617 10.5689L12.8341 11.5655L18.447 19.8835H16.1434L11.5632 13.096V13.0956Z"
+        fill={color}
+      />
     </svg>
   );
 };

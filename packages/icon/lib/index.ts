@@ -53,8 +53,6 @@ import { LoginCertifyType03Icon } from './icons/login_certify_type_03';
 import { LoginCertifyType04Icon } from './icons/login_certify_type_04';
 import { LoginCertifyType05Icon } from './icons/login_certify_type_05';
 import { LoginCertifyType06Icon } from './icons/login_certify_type_06';
-import { LogoKrdsIcon } from './icons/logo_krds';
-import { LogoKrdsHighContrastIcon } from './icons/logo_krds_high_contrast';
 import { LogoutIcon } from './icons/logout';
 import { MoreIcon } from './icons/more';
 import { MyIcon } from './icons/my';
@@ -143,8 +141,6 @@ export {
   LoginCertifyType04Icon,
   LoginCertifyType05Icon,
   LoginCertifyType06Icon,
-  LogoKrdsIcon,
-  LogoKrdsHighContrastIcon,
   LogoutIcon,
   MoreIcon,
   MyIcon,

@@ -5,7 +5,7 @@ export const SwitchOnIcon: React.FC<{
   height?: number;
   className?: string;
   color?: string;
-}> = ({ width = 24, height = 24, className, color = '#33363D' }) => {
+}> = ({ width = 24, height = 24, className, color = '#256EF4' }) => {
   return (
     <svg
       width={width}
@@ -19,7 +19,7 @@ export const SwitchOnIcon: React.FC<{
         <path
           id="Vector 1"
           d="M1 5.5L4.63158 9L9 2"
-          stroke="#256EF4"
+          stroke={color}
           stroke-width="1.6"
           stroke-linecap="round"
           stroke-linejoin="round"
