@@ -72,7 +72,11 @@ export const ContextProvider: React.FC<{
   };
 
   const context: ContextProps = {
-    token: { primitive: {}, semantic: {}, component: {} },
+    token: {
+      primitive: { ...token.primitive },
+      semantic: { ...token.semantic },
+      component: { ...token.component },
+    },
     mode: themeMode,
     locale: locale,
     textSize: textSize,
