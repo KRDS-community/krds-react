@@ -1,5 +1,3 @@
-import { colors } from '../colors/color';
-import { Color } from '../colors/color.type';
 import { Label } from './Label';
 import { LinkButton } from './LinkButton';
 
@@ -19,23 +17,6 @@ const ALERT_TAG_MAP: Record<AlertVariant, string> = {
   ok: '안전',
   info: '안내',
 } as const;
-
-const variantStyles: Record<
-  NonNullable<CriticalAlertProps['variant']>,
-  {
-    fill: { backgroundColor: string; color: Color };
-  }
-> = {
-  info: {
-    fill: { backgroundColor: colors.primary70, color: 'gray-90' },
-  },
-  ok: {
-    fill: { backgroundColor: colors.success, color: 'success-70' },
-  },
-  danger: {
-    fill: { backgroundColor: colors.danger, color: 'danger-70' },
-  },
-};
 
 export const CriticalAlert = ({
   text,
@@ -92,7 +73,6 @@ export const CriticalAlert = ({
 };
 
 const UrgentBadge = ({ variant }: { variant: AlertVariant }) => {
-  const { backgroundColor } = variantStyles[variant].fill;
   const tag = ALERT_TAG_MAP[variant];
 
   return (
@@ -105,7 +85,7 @@ const UrgentBadge = ({ variant }: { variant: AlertVariant }) => {
             gap-1      
         `}
       style={{
-        backgroundColor,
+        backgroundColor: '', // TODO: fix
         width: '78px',
         height: '48px',
       }}

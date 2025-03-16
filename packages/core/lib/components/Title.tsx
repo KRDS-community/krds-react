@@ -1,8 +1,5 @@
-import { Color, getTextColorClassname } from '../colors/color.type';
-
 export type TitleProps<E extends React.ElementType> = {
   size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs';
-  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
@@ -23,7 +20,7 @@ export const Title = <E extends React.ElementType = 'h3'>({
     xs: 'text-title-xs-mobile sm:text-title-xs',
   }[size];
   const weightClass = 'font-bold';
-  const textColorClass = getTextColorClassname(color);
+  const textColorClass = '';
 
   return (
     <h3

@@ -1,4 +1,3 @@
-import { colors } from '../colors/color';
 import { Label } from './Label';
 
 export type MastheadProps<E extends React.ElementType> = {
@@ -20,7 +19,7 @@ export const Masthead = <E extends React.ElementType = 'div'>({
       <div
         className="w-full flex flex-row items-center px-4 gap-5 py-2"
         style={{
-          backgroundColor: colors.secondary5,
+          backgroundColor: '', // TODO: fix
         }}
       >
         <RepublicOfKoreaFlagIcon style={flagStyle} />

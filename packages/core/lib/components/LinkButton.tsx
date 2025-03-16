@@ -1,5 +1,4 @@
 import React from 'react';
-import { Color } from '../colors/color.type';
 import { Link } from './Link';
 
 export type LinkButtonProps<E extends React.ElementType> = {
@@ -25,17 +24,14 @@ export const LinkButton = <E extends React.ElementType = 'a'>({
 
   const variantStyles: {
     style: string;
-    color: Color;
     weight: 'regular' | 'bold';
   } = {
     accent: {
       style: 'hover:bg-secondary-5',
-      color: 'primary' as Color,
       weight: 'bold' as const,
     },
     default: {
       style: 'hover:bg-secondary-5',
-      color: 'gray-90' as Color,
       weight: 'regular' as const,
     },
   }[variant];
@@ -50,7 +46,6 @@ export const LinkButton = <E extends React.ElementType = 'a'>({
     <Link
       className={`${baseStyles} ${variantStyles.style} ${className}`}
       size={linkSize}
-      color={variantStyles.color}
       href={link}
       role="link"
       weight={variantStyles.weight}
