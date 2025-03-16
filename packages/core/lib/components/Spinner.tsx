@@ -1,16 +1,9 @@
-import { Color, getTextColorClassname } from '../colors/color.type';
-
 export type SpinnerProps = {
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
-  color?: Color;
   className?: string;
 };
 
-export const Spinner = ({
-  size = 'medium',
-  color,
-  className = '',
-}: SpinnerProps) => {
+export const Spinner = ({ size = 'medium', className = '' }: SpinnerProps) => {
   const sizeStyles: { style: string; fontSize: 'l' | 'm' | 's' | 'xs' } = {
     'x-small': {
       style: 'w-4 h-4',
@@ -34,7 +27,7 @@ export const Spinner = ({
     },
   }[size];
 
-  const colorStyles = color ? getTextColorClassname(color) : '';
+  const colorStyles = '';
 
   const spinnerStyles = `
     ${sizeStyles.style} 

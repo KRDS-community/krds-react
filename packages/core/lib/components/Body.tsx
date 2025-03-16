@@ -1,9 +1,6 @@
-import { Color, getTextColorClassname } from '../colors/color.type';
-
 export type BodyProps<E extends React.ElementType> = {
   size?: 'l' | 'm' | 's';
   weight?: 'regular' | 'bold';
-  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
@@ -26,7 +23,7 @@ export const Body = <E extends React.ElementType = 'p'>({
     regular: 'font-regular',
     bold: 'font-bold',
   }[weight];
-  const textColorClass = getTextColorClassname(color);
+  const textColorClass = '';
 
   return (
     <p

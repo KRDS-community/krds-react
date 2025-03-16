@@ -45,12 +45,38 @@ export const ContextProvider: React.FC<{
   const [locale, setLocale] = useState<Locale>('ko');
   const [textSize, setTextSize] = useState<TextSize>('medium');
 
+  const changeTheme = (mode: ThemeMode) => {
+    switch (mode) {
+      case 'system': {
+        // get system theme
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
+          ? 'high-contrast'
+          : 'light';
+        document.documentElement.setAttribute('data-theme', systemTheme);
+        break;
+      }
+
+      case 'dark':
+      case 'high-contrast': {
+        document.documentElement.setAttribute('data-theme', 'high-contrast');
+        break;
+      }
+
+      case 'light': {
+        document.documentElement.setAttribute('data-theme', 'light');
+        break;
+      }
+    }
+    setThemeMode(mode);
+  };
+
   const context: ContextProps = {
-    token: { ...token },
+    token: { primitive: {}, semantic: {}, component: {} },
     mode: themeMode,
     locale: locale,
     textSize: textSize,
-    setThemeMode: (mode) => setThemeMode(mode),
+    setThemeMode: changeTheme,
     setLocale: (locale) => setLocale(locale),
     setTextSize: (textSize) => setTextSize(textSize),
   };

@@ -1,9 +1,6 @@
-import { Color, getTextColorClassname } from '../colors/color.type';
-
 export type LabelProps<E extends React.ElementType> = {
   size?: 'l' | 'm' | 's' | 'xs';
   weight?: 'regular' | 'bold';
-  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
@@ -11,7 +8,6 @@ export type LabelProps<E extends React.ElementType> = {
 export const Label = <E extends React.ElementType = 'label'>({
   size = 'm',
   weight = 'regular',
-  color = 'gray-90',
   children,
   className = '',
   ...props
@@ -27,7 +23,7 @@ export const Label = <E extends React.ElementType = 'label'>({
     regular: 'font-regular',
     bold: 'font-bold',
   }[weight];
-  const textColorClass = getTextColorClassname(color);
+  const textColorClass = '';
 
   return (
     <label

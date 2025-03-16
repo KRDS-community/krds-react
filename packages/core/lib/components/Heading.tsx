@@ -1,8 +1,5 @@
-import { Color, getTextColorClassname } from '../colors/color.type';
-
 export type HeadingProps<E extends React.ElementType> = {
   size?: 'l' | 'm' | 's';
-  color?: Color;
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<E>;
@@ -20,7 +17,7 @@ export const Heading = <E extends React.ElementType = 'h2'>({
     s: 'text-heading-s-mobile sm:text-heading-s',
   }[size];
   const weightClass = 'font-bold';
-  const textColorClass = getTextColorClassname(color);
+  const textColorClass = '';
 
   return (
     <h2
